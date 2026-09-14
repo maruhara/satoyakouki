@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+/* 全体リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050508; /* 深みのある黒背景 */
+  color: #ffffff;
+  font-family: 'Noto Sans JP', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* スマホ表示専用枠（PCで見てもスマホサイズを維持） */
+.site-container {
+  width: 100%;
+  max-width: 430px; /* 最新の大型スマホサイズ */
+  background: #0d0e15;
+  min-height: 100vh;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  border-left: 1px solid #1f2233;
+  border-right: 1px solid #1f2233;
+  padding-bottom: 40px;
+}
+
+/* ヘッダー飾り */
+.card-header {
+  padding: 20px 20px 10px;
+  text-align: left;
+}
+
+.sub-tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  color: #00f0ff; /* サイバーブルー */
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.logo-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fff 0%, #a259ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+}
+
+/* 画像エリア */
+.character-card {
+  padding: 0 16px;
+  position: relative;
+}
+
+.image-box {
+  position: relative;
+  width: 100%;
+  height: 65vh; /* スマホ画面の65%の高さ */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+.character-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* 画像にかぶせるグラデーション・枠線 */
+.frame-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, #0d0e15 100%);
+}
+
+/* テキストコンテンツエリア */
+.info-section {
+  padding: 20px 24px 0;
+  margin-top: -20px; /* 画像と自然につなげる */
+  position: relative;
+  z-index: 2;
+}
+
+.team-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  color: #a259ff; /* パープルネオン */
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.name-jp {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.name-en {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  color: #8a8d9b;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.bio-text {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #b3b6c5;
+  margin-bottom: 24px;
+  border-left: 2px solid #a259ff;
+  padding-left: 12px;
+}
+
+/* ボタンデザイン */
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 0;
+  background: linear-gradient(90deg, #7928ca, #ff0080);
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}

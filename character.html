@@ -2,32 +2,51 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <!-- スマホ表示のレスポンシブ対応に必須のタグ -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>オリジナルギャラリー</title>
+  <title>CHARACTER | SPECIAL</title>
   <link rel="stylesheet" href="style.css">
+  <!-- カッコいい英字フォント（Google Fonts） -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- メインビジュアルエリア -->
-  <div class="card-container">
-    <!-- スマホ全画面に収まる画像枠 -->
-    <div class="image-wrapper">
-      <!-- ★差し替えたい画像のパスを指定 -->
-      <img src="main-image.jpg" alt="メイン画像" class="card-image">
+  <!-- スマホ幅固定のメインコンテナ -->
+  <main class="site-container">
+
+    <!-- ヘッダー英字ロゴ飾り -->
+    <header class="card-header">
+      <span class="sub-tag">// NEW STYLE COLLECTION</span>
+      <h1 class="logo-title">cozmez</h1>
+    </header>
+
+    <!-- キャラクターメイン画像エリア -->
+    <div class="character-card">
+      <div class="image-box">
+        <!-- 差し替え画像 -->
+        <img src="main-image.jpg" alt="character" class="character-img">
+        <!-- 画像上のネオン枠装飾 -->
+        <div class="frame-overlay"></div>
+      </div>
     </div>
 
-    <!-- 画像の下に重ねるコンテンツ（テキストやボタンなど） -->
-    <div class="content">
-      <h1 class="team-title">タイトル / 名前</h1>
-      <p class="description">
-        ここに説明文が入ります。テキストの分量に合わせて高さは自動で調整されます。
+    <!-- 下部テキスト＆情報エリア -->
+    <section class="info-section">
+      <div class="character-name-box">
+        <span class="team-name">BAE / cozmez</span>
+        <h2 class="name-jp">矢戸乃上 珂波汰</h2>
+        <p class="name-en">KANATA YATONOKAMI</p>
+      </div>
+
+      <p class="bio-text">
+        ここにキャラクターのセリフや紹介文を入力します。ストリート感のあるダークな世界観に合わせてネオンや透過グラデーションを効かせています。
       </p>
-      
-      <!-- ボタンが必要な場合 -->
-      <a href="#" class="btn">詳細を見る</a>
-    </div>
-  </div>
+
+      <div class="btn-group">
+        <a href="#" class="btn-primary">MORE DETAILS</a>
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>
