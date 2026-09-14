@@ -8,39 +8,40 @@
 }
 
 body {
-  background-color: #050508; /* 深みのある黒背景 */
+  background-color: #000000; /* PC背景を完全な黒に変更 */
   color: #ffffff;
   font-family: 'Noto Sans JP', sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center; /* 左右中央寄せ */
+  align-items: center;    /* 上下中央寄せ */
   min-height: 100vh;
   overflow-x: hidden;
+  padding: 20px 0; /* PCで上下に適度な余白 */
 }
 
-/* スマホ表示専用枠（PCで見てもスマホサイズを維持） */
+/* スマホ表示専用枠（メインカード） */
 .site-container {
   width: 100%;
-  max-width: 430px; /* 最新の大型スマホサイズ */
-  background: #0d0e15;
-  min-height: 100vh;
+  max-width: 430px; /* スマホ画面幅 */
+  background: linear-gradient(180deg, #090a0f 0%, #030305 100%); /* 暗めのダークグラデーション */
+  border-radius: 16px; /* カード角を少し丸めて独立感を出す */
   position: relative;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-  border-left: 1px solid #1f2233;
-  border-right: 1px solid #1f2233;
+  box-shadow: 0 0 40px rgba(162, 89, 255, 0.15); /* ほのかな紫のネオン発光 */
+  border: 1px solid #1a1c29;
   padding-bottom: 40px;
+  overflow: hidden;
 }
 
 /* ヘッダー飾り */
 .card-header {
-  padding: 20px 20px 10px;
+  padding: 24px 20px 12px;
   text-align: left;
 }
 
 .sub-tag {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.7rem;
-  color: #00f0ff; /* サイバーブルー */
+  color: #00f0ff;
   letter-spacing: 0.15em;
   display: block;
   margin-bottom: 4px;
@@ -67,10 +68,11 @@ body {
 .image-box {
   position: relative;
   width: 100%;
-  height: 65vh; /* スマホ画面の65%の高さ */
+  height: 60vh;
+  max-height: 500px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
 }
 
 .character-img {
@@ -88,16 +90,16 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, #0d0e15 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, #06070a 100%);
 }
 
 /* テキストコンテンツエリア */
 .info-section {
   padding: 20px 24px 0;
-  margin-top: -20px; /* 画像と自然につなげる */
+  margin-top: -15px;
   position: relative;
   z-index: 2;
 }
@@ -105,7 +107,7 @@ body {
 .team-name {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.75rem;
-  color: #a259ff; /* パープルネオン */
+  color: #a259ff;
   font-weight: 700;
   letter-spacing: 0.1em;
   display: block;
@@ -156,9 +158,4 @@ body {
   letter-spacing: 0.15em;
   border-radius: 6px;
   box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
 }
