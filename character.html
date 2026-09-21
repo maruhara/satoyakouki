@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>CHARACTER | SATOYAKOUKI</title>
-  <link rel="stylesheet" href="./style.css?v=1.4">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  
+  <!-- バージョン 1.4 に指定 -->
+  <link rel="stylesheet" href="./style.css?v=1.5">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- 固定ヘッダー -->
   <header class="site-header">
     <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -19,6 +23,7 @@
     </button>
   </header>
 
+  <!-- ドロップダウンメニュー -->
   <nav class="dropdown-menu" id="dropdownMenu">
     <a href="./index.html">INDEX</a>
     <a href="./character.html">CHARACTER</a>
@@ -26,34 +31,114 @@
     <a href="./author.html">AUTHOR</a>
   </nav>
 
+  <!-- メインコンテンツ -->
   <main class="main-wrapper">
     <div class="content-card">
-      <h1 class="page-title">CHARACTER</h1>
+      <h1 class="page-title char-title-left">CHARACTER</h1>
 
-      <div class="character-img-box">
-        <img src="./main-image.jpg" alt="Character Image">
+      <!-- メイン画像表示エリア（立ち絵） -->
+      <div class="character-img-box" id="charImgBox">
+        <img id="mainCharImg" src="./main-image.jpg" alt="Character Stand Image">
       </div>
 
-      <div class="char-info">
-        <span class="char-tag">NIGHT & SAND</span>
-        <h2 class="char-name-jp">キャラクター名</h2>
-        <p class="char-name-en">CHARACTER NAME</p>
-        <p class="char-bio">
-          ここにキャラクターのプロフィールや紹介文が入ります。夜と砂の都を舞台に紡がれる物語の登場人物です。
+      <!-- プロフィールテキストエリア -->
+      <div class="char-info align-left" id="charInfoBox">
+        <span class="char-tag" id="charTag">NIGHT & SAND</span>
+        <h2 class="char-name-jp" id="charNameJp">キャラクター1</h2>
+        <p class="char-name-en" id="charNameEn">CHARACTER 01</p>
+        <p class="char-bio" id="charBio">
+          1人目のキャラクターのプロフィール文です。夜と砂の都を舞台に活動するメインキャラクターの紹介がここに入ります。
         </p>
       </div>
+
+      <!-- キャラクター切り替えアイコン（バストアップ・2人分） -->
+      <div class="char-selector">
+        <button class="char-thumb-btn active" data-char="1" aria-label="Character 1">
+          <img src="./chara1-icon.jpg" alt="Char 1 Bustup" onerror="this.src='./main-image.jpg'">
+        </button>
+        <button class="char-thumb-btn" data-char="2" aria-label="Character 2">
+          <img src="./chara2-icon.jpg" alt="Char 2 Bustup" onerror="this.src='./main-image.jpg'">
+        </button>
+      </div>
+
     </div>
   </main>
 
+  <!-- 固定フッター -->
   <footer class="site-footer">
-       <p>&copy;  maruhara / 転載禁止 Do not repost without permission.</p>
+    <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
   </footer>
 
+  <!-- スクリプト制御 -->
   <script>
+    // ハンバーガーメニュー
     const menuBtn = document.getElementById('menuBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
     menuBtn.addEventListener('click', () => {
       dropdownMenu.classList.toggle('active');
+    });
+
+    // キャラクターデータ定義（2人分）
+    const characters = {
+      1: {
+        tag: "NIGHT & SAND / 01",
+        nameJp: "キャラクター1",
+        nameEn: "FIRST CHARACTER",
+        bio: "1人目のキャラクターのプロフィール文です。立ち絵画像（main-image.jpg）とバストアップ画像（chara1-icon.jpg）が連動して表示されます。",
+        standImg: "./main-image.jpg" // 1人目の立ち絵
+      },
+      2: {
+        tag: "NIGHT & SAND / 02",
+        nameJp: "キャラクター2",
+        nameEn: "SECOND CHARACTER",
+        bio: "2人目のキャラクターのプロフィール文です。タップすると、ふわっと切り替わります。ここに2人目の詳細な説明文を記入してください。",
+        standImg: "./chara2-image.jpg" // 2人目の立ち絵（画像がない場合は仮表示）
+      }
+    };
+
+    // 要素取得
+    const mainCharImg = document.getElementById('mainCharImg');
+    const charTag = document.getElementById('charTag');
+    const charNameJp = document.getElementById('charNameJp');
+    const charNameEn = document.getElementById('charNameEn');
+    const charBio = document.getElementById('charBio');
+    
+    const charImgBox = document.getElementById('charImgBox');
+    const charInfoBox = document.getElementById('charInfoBox');
+    const thumbBtns = document.querySelectorAll('.char-thumb-btn');
+
+    // タブ切り替え処理（ぼやっと浮かび上がるアニメーション付き）
+    thumbBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const charId = btn.getAttribute('data-char');
+        const data = characters[charId];
+
+        if (!data || btn.classList.contains('active')) return;
+
+        // ボタンの選択状態変更
+        thumbBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // 1. 一旦透明＆少しボカす（フェードアウト）
+        charImgBox.classList.add('fade-out');
+        charInfoBox.classList.add('fade-out');
+
+        setTimeout(() => {
+          // 2. データ書き換え
+          mainCharImg.src = data.standImg;
+          charTag.textContent = data.tag;
+          charNameJp.textContent = data.nameJp;
+          charNameEn.textContent = data.nameEn;
+          charBio.textContent = data.bio;
+
+          // 画像読み込みエラー時のフォールバック（画像がない場合用）
+          mainCharImg.onerror = () => { mainCharImg.src = './main-image.jpg'; };
+
+          // 3. ふわっと浮かび上がらせる（フェードイン）
+          charImgBox.classList.remove('fade-out');
+          charInfoBox.classList.remove('fade-out');
+        }, 300); // 0.3秒後に切り替え
+      });
     });
   </script>
 </body>
