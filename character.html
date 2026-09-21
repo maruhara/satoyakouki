@@ -7,10 +7,10 @@
   <!-- 検索避け -->
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>CHARACTER | SATOYAKOUKI</title>
+  <title>キャラクター | SATOYAKOUKI</title>
   
-  <!-- バージョン 2.3 に指定 -->
-  <link rel="stylesheet" href="./style.css?v=2.0">
+  <!-- バージョン 2.5 に指定 -->
+  <link rel="stylesheet" href="./style.css?v=2.1">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -48,8 +48,14 @@
         </button>
       </div>
 
-      <!-- メイン画像表示エリア（スワイプ対応） -->
+      <!-- メイン画像表示エリア -->
       <div class="character-img-box" id="charImgBox">
+        
+        <!-- 片側ずつ表示する白い小さな三角矢印ナビ -->
+        <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Stand" style="display: none;">▲</button>
+        <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="To Bust-up">▲</button>
+
+        <!-- メイン画像 -->
         <img id="mainCharImg" src="./main-image.jpg" alt="Character Image">
         
         <!-- 画像種別表示（STAND / BUST-UP） -->
@@ -62,7 +68,7 @@
         <h2 class="char-name-jp" id="charNameJp">Nor'a Fainne</h2>
         <p class="char-name-en" id="charNameEn">ノル・ア・ファインネ</p>
         <p class="char-bio" id="charBio">
-          1人目のキャラクターのプロフィール文です。左右のスワイプまたは矢印タップで、立ち絵とバストアップ画像が切り替わります。
+          1人目のキャラクターのプロフィール文です。アイコンタップでキャラ変更、右矢印でバストアップ画像へ、左矢印で立ち絵へ戻ります。
         </p>
       </div>
 
@@ -83,13 +89,13 @@
       dropdownMenu.classList.toggle('active');
     });
 
-    // キャラクター＆画像データ（1人につき立ち絵とバストアップを用意）
+    // キャラクター＆画像データ
     const characters = {
       1: {
         tag: "Miqo'te / Moonkeeper",
         nameJp: "Nor'a Fainne",
         nameEn: "ノル・ア・ファインネ",
-        bio: "1人目のキャラクターのプロフィール文です。左右のスワイプまたは矢印タップで、立ち絵とバストアップ画像が切り替わります。",
+        bio: "1人目のキャラクターのプロフィール文です。上のアイコンでキャラ変更、右矢印でバストアップ画像、左矢印で立ち絵画像に切り替わります。",
         standImg: "./main-image.jpg",
         bustImg: "./chara1-icon.jpg"
       },
@@ -97,7 +103,7 @@
         tag: "Elezen / Shader",
         nameJp: "Hyde Gilham",
         nameEn: "ハイド・ギラム",
-        bio: "2人目のキャラクターのプロフィール文です。スワイプでスムーズに表示が切り替わります。",
+        bio: "2人目のキャラクターのプロフィール文です。矢印タップやスワイプでスムーズに立ち絵とバストアップが切り替わります。",
         standImg: "./chara2-image.jpg",
         bustImg: "./chara2-icon.jpg"
       }
@@ -117,8 +123,10 @@
     const charImgBox = document.getElementById('charImgBox');
     const charInfoBox = document.getElementById('charInfoBox');
     const thumbBtns = document.querySelectorAll('.char-thumb-btn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    // 表示更新関数（フェードアニメーション付き）
+    // 表示更新関数（フェードアニメーション＆矢印表示切り替え）
     function updateDisplay(charId, viewType) {
       const data = characters[charId];
       if (!data) return;
@@ -151,21 +159,41 @@
         charBio.textContent = data.bio;
         imgTypeBadge.textContent = (viewType === 'stand') ? 'STAND' : 'BUST-UP';
 
-        // 3. フェードイン
+        // 3. 矢印の表示切り替え（STAND時は右矢印のみ、BUST-UP時は左矢印のみ）
+        if (viewType === 'stand') {
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'flex';
+        } else {
+          prevBtn.style.display = 'flex';
+          nextBtn.style.display = 'none';
+        }
+
+        // 4. フェードイン
         charImgBox.classList.remove('fade-out');
         charInfoBox.classList.remove('fade-out');
       }, 250);
     }
 
-    // アイコンタップ時（キャラクター切り替え）
+    // アイコンタップ時（キャラクター切り替え：立ち絵表示に戻す）
     thumbBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-char');
-        updateDisplay(id, 'stand'); // キャラクタートグル時は立ち絵表示に戻す
+        updateDisplay(id, 'stand');
       });
     });
 
-    // スワイプ検知処理（立ち絵 ↔ バストアップ 切り替え）
+    // 矢印ボタンタップ処理
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateDisplay(currentCharId, 'bust'); // 右矢印タップでバストアップへ
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateDisplay(currentCharId, 'stand'); // 左矢印タップで立ち絵へ戻る
+    });
+
+    // スワイプ処理（左スワイプでバストアップへ、右スワイプで立ち絵へ戻る）
     let startX = 0;
     let endX = 0;
 
@@ -180,9 +208,14 @@
 
     function handleSwipe() {
       const diffX = startX - endX;
-      if (Math.abs(diffX) > 40) { // 40px以上のスワイプで反応
-        const nextView = (currentViewType === 'stand') ? 'bust' : 'stand';
-        updateDisplay(currentCharId, nextView);
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0 && currentViewType === 'stand') {
+          // 左にスワイプ（＝右へ進む動作）でバストアップへ
+          updateDisplay(currentCharId, 'bust');
+        } else if (diffX < 0 && currentViewType === 'bust') {
+          // 右にスワイプ（＝左へ戻る動作）で立ち絵へ
+          updateDisplay(currentCharId, 'stand');
+        }
       }
     }
   </script>
