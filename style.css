@@ -15,9 +15,12 @@ html, body {
   overflow-x: hidden;
   background-color: #0a0b0d;
   color: #f2f2f2;
+  
+  /* ↓ 英語フォント 'Cinzel' を一番左に指定します */
   font-family: 'Cinzel', 'Zen Kaku Gothic New', sans-serif;
+  
   font-weight: 300;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
 }
 
 body {
