@@ -12,10 +12,13 @@
 html, body {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden; /* 左右のブレ・横スクロールを強制防止 */
-  background-color: #0a0b0d; /* 深い漆黒 */
+  overflow-x: hidden;
+  background-color: #0a0b0d;
   color: #f2f2f2;
-  font-family: 'Noto Sans JP', sans-serif;
+  /* ↓ フォントを Zen Kaku Gothic New に変更し、少し細め（font-weight: 300）に指定 */
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 300; 
+  letter-spacing: 0.05em; /* 文字間隔を少し広げるとさらに上品になります */
 }
 
 body {
