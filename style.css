@@ -12,7 +12,7 @@
 html, body {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden; /* 画面が左右に揺れるのを完全に防ぐ */
+  overflow-x: hidden; /* 左右のブレ・横スクロールを強制防止 */
   background-color: #0a0b0d; /* 深い漆黒 */
   color: #f2f2f2;
   font-family: 'Noto Sans JP', sans-serif;
@@ -25,7 +25,7 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  word-wrap: break-word; /* 長い単語や文字のはみ出しを防止 */
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
@@ -38,10 +38,10 @@ body {
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: rgba(10, 11, 13, 0.9);
+  background-color: rgba(10, 11, 13, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* ヘッダー下部の白い線 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* 白い区切り線 */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +76,7 @@ body {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #f2f2f2; /* 白い3本線 */
+  background-color: #f2f2f2;
   transition: all 0.3s ease;
 }
 
@@ -86,11 +86,11 @@ body {
   top: 60px;
   left: 0;
   width: 100%;
-  background-color: rgba(15, 17, 21, 0.95);
+  background-color: rgba(15, 17, 21, 0.98);
   border-bottom: 1px solid rgba(197, 160, 89, 0.3);
   display: none;
   flex-direction: column;
-  padding: 20px 0;
+  padding: 15px 0;
   z-index: 999;
 }
 
@@ -118,14 +118,14 @@ body {
    ========================================== */
 .main-wrapper {
   width: 100%;
-  max-width: 440px; /* スマホ画面幅に最適化 */
-  margin: 80px auto 40px; /* ヘッダー分空ける */
+  max-width: 440px;
+  margin: 80px auto 40px;
   padding: 0 16px;
   box-sizing: border-box;
 }
 
 .content-card {
-  background-color: rgba(31, 34, 41, 0.75); /* 半透明のダークグレー */
+  background-color: rgba(31, 34, 41, 0.75); /* 半透明グレー */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 24px 20px;
@@ -146,7 +146,69 @@ body {
 }
 
 /* ==========================================
-   4. キャラクターページ専用スタイル
+   4. Index ページ専用
+   ========================================== */
+.index-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.logo-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #c5a059;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.warning-box {
+  background-color: rgba(31, 34, 41, 0.6);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  text-align: left;
+}
+
+.warning-title {
+  color: #c5a059;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  display: block;
+  text-align: center;
+}
+
+.btn-enter {
+  display: inline-block;
+  width: 100%;
+  padding: 16px 0;
+  background: linear-gradient(135deg, #c5a059 0%, #9e7d3b 100%);
+  color: #0a0b0d;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.2em;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+  transition: opacity 0.2s;
+}
+
+/* ==========================================
+   5. Character ページ専用
    ========================================== */
 .character-img-box {
   width: 100%;
@@ -162,10 +224,6 @@ body {
   height: auto;
   display: block;
   object-fit: cover;
-}
-
-.char-info {
-  margin-top: 15px;
 }
 
 .char-tag {
@@ -198,19 +256,147 @@ body {
   color: #d1d5db;
   border-left: 2px solid #c5a059;
   padding-left: 12px;
-  word-break: break-word; /* テキストのはみ出し防止 */
 }
 
 /* ==========================================
-   5. 固定フッター（共通）
+   6. Story ページ専用
+   ========================================== */
+.story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.story-card {
+  display: block;
+  background-color: rgba(20, 22, 28, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s;
+}
+
+.story-card:hover {
+  border-color: #c5a059;
+}
+
+.story-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  color: #c5a059;
+  letter-spacing: 0.1em;
+}
+
+.story-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 4px 0 6px;
+}
+
+.story-desc {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   7. Novel ページ専用（文字のみ縦スクロール）
+   ========================================== */
+.novel-wrapper {
+  position: fixed;
+  top: 60px;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 16px;
+}
+
+.novel-card {
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  background-color: rgba(31, 34, 41, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px 20px;
+  overflow-y: auto; /* 背景固定・文字だけスクロール */
+  box-sizing: border-box;
+}
+
+.novel-text {
+  font-size: 0.95rem;
+  line-height: 2.1;
+  color: #e5e7eb;
+}
+
+.novel-text p {
+  margin-bottom: 1.5em;
+}
+
+/* ==========================================
+   8. Author ページ専用
+   ========================================== */
+.author-profile {
+  text-align: center;
+}
+
+.author-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.author-id {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  color: #c5a059;
+  margin-bottom: 20px;
+}
+
+.author-bio {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.social-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #c5a059;
+  border-radius: 20px;
+  color: #c5a059;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+}
+
+/* ==========================================
+   9. 固定フッター（共通）
    ========================================== */
 .site-footer {
   width: 100%;
-  padding: 20px 0;
-  text-align: center;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #6b7280;
+  background-color: #0a0b0d;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: auto;
 }

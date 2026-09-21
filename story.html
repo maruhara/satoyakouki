@@ -3,71 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- ↓ キャッシュ無効化（毎回最新を取得させる）タグ ↓ -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <title>タイトル</title>
-  <link rel="stylesheet" href="./style.css?v=1.2">
+  <title>STORY | SATOYAKOUKI</title>
+  <link rel="stylesheet" href="./style.css?v=1.3">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div class="site-container">
+  <header class="site-header">
+    <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
 
-    <!-- 固定ヘッダー（白い区切り線） -->
-    <header class="site-header">
-      <a href="./index.html" class="header-logo">DESERT REALM</a>
-      <button class="menu-trigger" id="menuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </header>
+  <nav class="dropdown-menu" id="dropdownMenu">
+    <a href="./index.html">INDEX</a>
+    <a href="./character.html">CHARACTER</a>
+    <a href="./story.html">STORY</a>
+    <a href="./author.html">AUTHOR</a>
+  </nav>
 
-    <!-- プルダウンメニュー -->
-    <nav class="dropdown-menu" id="dropdownMenu">
-      <ul>
-        <li><a href="./index.html">INDEX</a></li>
-        <li><a href="./character.html">CHARACTER</a></li>
-        <li><a href="./story.html">STORY</a></li>
-        <li><a href="./author.html">AUTHOR</a></li>
-      </ul>
-    </nav>
+  <main class="main-wrapper">
+    <div class="content-card">
+      <h1 class="page-title">STORY LIST</h1>
 
-    <!-- メインコンテンツ -->
-    <main class="main-content">
-      <div class="page-header-title">
-        <h1 class="page-title-en">STORY</h1>
-        <span class="page-title-sub">物語目録</span>
+      <div class="story-list">
+        <a href="./novel-sample.html" class="story-card">
+          <span class="story-num">EPISODE 01</span>
+          <h2 class="story-title">夜と砂の都</h2>
+          <p class="story-desc">静寂の夜に包まれた砂の都で繰り広げられる、二人の物語。</p>
+        </a>
       </div>
+    </div>
+  </main>
 
-      <ul class="story-list">
-        <li class="story-item">
-          <a href="./novel-sample.html" class="story-link">
-            <div class="story-title">第一章：黄金の幻影と月夜の歌</div>
-            <div class="story-meta">
-              <span>Chapter 01</span>
-              <span>2026.09.21</span>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </main>
-
-    <!-- 固定フッター -->
-    <footer class="site-footer">
-      <span class="footer-copy">&copy; satoyakouki / maruhara All Rights Reserved.</span>
-    </footer>
-
-  </div>
+  <footer class="site-footer">
+    <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
+  </footer>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
-
     menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      dropdownMenu.classList.toggle('open');
+      dropdownMenu.classList.toggle('active');
     });
   </script>
 </body>

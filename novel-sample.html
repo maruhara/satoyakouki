@@ -3,77 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- ↓ キャッシュ無効化（毎回最新を取得させる）タグ ↓ -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <title>タイトル</title>
-  <link rel="stylesheet" href="./style.css?v=1.2">
+  <title>夜と砂の都 | NOVEL</title>
+  <link rel="stylesheet" href="./style.css?v=1.3">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
-<body class="novel-page-body">
+<body>
 
-  <div class="site-container">
+  <header class="site-header">
+    <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
 
-    <header class="site-header">
-      <a href="./index.html" class="header-logo">DESERT REALM</a>
-      <button class="menu-trigger" id="menuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </header>
+  <nav class="dropdown-menu" id="dropdownMenu">
+    <a href="./index.html">INDEX</a>
+    <a href="./character.html">CHARACTER</a>
+    <a href="./story.html">STORY</a>
+    <a href="./author.html">AUTHOR</a>
+  </nav>
 
-    <nav class="dropdown-menu" id="dropdownMenu">
-      <ul>
-        <li><a href="./index.html">INDEX</a></li>
-        <li><a href="./character.html">CHARACTER</a></li>
-        <li><a href="./story.html">STORY</a></li>
-        <li><a href="./author.html">AUTHOR</a></li>
-      </ul>
-    </nav>
-
-    <!-- メインコンテンツ（背景固定・文字のみ縦スクロール） -->
-    <main class="main-content">
-      
-      <article class="novel-card">
-        <header class="novel-header">
-          <h1 class="novel-title">第一章：黄金の幻影と月夜の歌</h1>
-          <div style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--text-sub);">Word Count: 3,000</div>
-        </header>
-
-        <p class="novel-p">
-          静寂の夜が深く降り積もる砂の都。風が吹き抜けるたび、かつて繁栄を極めた古代都市の記憶を語り継ぐように微かな音が響く。
-        </p>
-        <p class="novel-p">
-          高層のテラスに佇む人影は、静かに月を見上げていた。黒い衣に施された細やかな金の刺繍が、蒼い月光を受けて淡い光を放っている。
-        </p>
-        <p class="novel-p">
-          「今夜も静かな夜だな」
-        </p>
-        <p class="novel-p">
-          静かな呟きは夜風に溶け込み、遠く広がる夜の砂漠へと消えていった。
-        </p>
-
-        <div style="margin-top: 40px; text-align: center;">
-          <a href="./story.html" class="btn-gold" style="display: inline-block; width: 60%;">STORY LIST</a>
-        </div>
-      </article>
-
-    </main>
-
-    <footer class="site-footer">
-      <span class="footer-copy">&copy; satoyakouki / maruhara All Rights Reserved.</span>
-    </footer>
-
+  <div class="novel-wrapper">
+    <article class="novel-card">
+      <h1 class="page-title">夜と砂の都</h1>
+      <div class="novel-text">
+        <p>ここに小説の本文が入ります。背景は固定されたまま、このカードの中の文章だけが上下にスムーズにスクロールします。</p>
+        <p>砂の風が静かに吹き抜ける夜、都の明かりが遠くでチラチラと揺れていた。</p>
+        <p>（本文が長くなっても枠内だけで快適に読書ができます）</p>
+      </div>
+    </article>
   </div>
+
+  <footer class="site-footer">
+    <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
+  </footer>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
-
     menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      dropdownMenu.classList.toggle('open');
+      dropdownMenu.classList.toggle('active');
     });
   </script>
 </body>
