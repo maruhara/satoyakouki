@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 検索避け（noindex）用メタタグ -->
+<meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>CHARACTER | SATOYAKOUKI</title>
   
-  <!-- バージョン 1.4 に指定 -->
-  <link rel="stylesheet" href="./style.css?v=1.8">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- バージョン 1.8 に指定 -->
+  <link rel="stylesheet" href="./style.css?v=1.9">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -36,29 +37,38 @@
     <div class="content-card">
       <h1 class="page-title char-title-left">CHARACTER</h1>
 
-      <!-- メイン画像表示エリア（立ち絵） -->
+      <!-- 画像コンテナ（上部にアイコン＆左右にスワイプ矢印） -->
       <div class="character-img-box" id="charImgBox">
-        <img id="mainCharImg" src="./main-image.jpg" alt="Character Stand Image">
+        
+        <!-- 画像上のアイコン一覧（右上配置） -->
+        <div class="char-overlay-selector">
+          <button class="char-thumb-btn active" data-char="1" aria-label="Character 1">
+            <img src="./chara1-icon.jpg" alt="Char 1 Icon" onerror="this.src='./main-image.jpg'">
+          </button>
+          <button class="char-thumb-btn" data-char="2" aria-label="Character 2">
+            <img src="./chara2-icon.jpg" alt="Char 2 Icon" onerror="this.src='./main-image.jpg'">
+          </button>
+        </div>
+
+        <!-- スワイプ案内（白い小さな三角矢印） -->
+        <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Previous Image">▲</button>
+        <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="Next Image">▲</button>
+
+        <!-- メイン表示画像（立ち絵 / バストアップ） -->
+        <img id="mainCharImg" src="./main-image.jpg" alt="Character Image">
+        
+        <!-- 画像タイプインジケーター（STAND / BUST-UP） -->
+        <span class="img-type-badge" id="imgTypeBadge">STAND</span>
       </div>
 
       <!-- プロフィールテキストエリア -->
       <div class="char-info align-left" id="charInfoBox">
-        <span class="char-tag" id="charTag">NIGHT & SAND</span>
+        <span class="char-tag" id="charTag">NIGHT & SAND / 01</span>
         <h2 class="char-name-jp" id="charNameJp">キャラクター1</h2>
-        <p class="char-name-en" id="charNameEn">CHARACTER 01</p>
+        <p class="char-name-en" id="charNameEn">FIRST CHARACTER</p>
         <p class="char-bio" id="charBio">
-          1人目のキャラクターのプロフィール文です。夜と砂の都を舞台に活動するメインキャラクターの紹介がここに入ります。
+          1人目のキャラクターのプロフィール文です。画像を左右にスワイプ（フリック）すると、バストアップ画像に切り替わります。
         </p>
-      </div>
-
-      <!-- キャラクター切り替えアイコン（バストアップ・2人分） -->
-      <div class="char-selector">
-        <button class="char-thumb-btn active" data-char="1" aria-label="Character 1">
-          <img src="./chara1-icon.jpg" alt="Char 1 Bustup" onerror="this.src='./main-image.jpg'">
-        </button>
-        <button class="char-thumb-btn" data-char="2" aria-label="Character 2">
-          <img src="./chara2-icon.jpg" alt="Char 2 Bustup" onerror="this.src='./main-image.jpg'">
-        </button>
       </div>
 
     </div>
@@ -69,7 +79,7 @@
     <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
   </footer>
 
-  <!-- スクリプト制御 -->
+  <!-- スクリプト制御（スワイプ＆切り替え） -->
   <script>
     // ハンバーガーメニュー
     const menuBtn = document.getElementById('menuBtn');
@@ -78,68 +88,136 @@
       dropdownMenu.classList.toggle('active');
     });
 
-    // キャラクターデータ定義（2人分）
+    // キャラクター＆画像データ（1人につき立ち絵とバストアップを用意）
     const characters = {
       1: {
-        tag: "NIGHT & SAND / 01",
-        nameJp: "キャラクター1",
-        nameEn: "FIRST CHARACTER",
-        bio: "1人目のキャラクターのプロフィール文です。立ち絵画像（main-image.jpg）とバストアップ画像（chara1-icon.jpg）が連動して表示されます。",
-        standImg: "./main-image.jpg" // 1人目の立ち絵
+        tag: "Miqo'te / Moonkeeper",
+        nameJp: "Nor'a Fainne",
+        nameEn: "ノル・ア・ファインネ",
+        bio: "1人目のキャラクターのプロフィール文です。左右のスワイプまたは矢印タップで、立ち絵とバストアップ画像が切り替わります。",
+        standImg: "./main-image.jpg",
+        bustImg: "./chara1-icon.jpg"
       },
       2: {
-        tag: "NIGHT & SAND / 02",
-        nameJp: "キャラクター2",
-        nameEn: "SECOND CHARACTER",
-        bio: "2人目のキャラクターのプロフィール文です。タップすると、ふわっと切り替わります。ここに2人目の詳細な説明文を記入してください。",
-        standImg: "./chara2-image.jpg" // 2人目の立ち絵（画像がない場合は仮表示）
+        tag: "Elezen / Shader",
+        nameJp: "Hyde Gilham",
+        nameEn: "ハイド・ギラム",
+        bio: "2人目のキャラクターのプロフィール文です。スワイプでスムーズに表示が切り替わります。",
+        standImg: "./chara2-image.jpg",
+        bustImg: "./chara2-icon.jpg"
       }
     };
 
-    // 要素取得
+    let currentCharId = 1;
+    let currentViewType = 'stand'; // 'stand' または 'bust'
+
+    // DOM要素
     const mainCharImg = document.getElementById('mainCharImg');
     const charTag = document.getElementById('charTag');
     const charNameJp = document.getElementById('charNameJp');
     const charNameEn = document.getElementById('charNameEn');
     const charBio = document.getElementById('charBio');
+    const imgTypeBadge = document.getElementById('imgTypeBadge');
     
     const charImgBox = document.getElementById('charImgBox');
     const charInfoBox = document.getElementById('charInfoBox');
     const thumbBtns = document.querySelectorAll('.char-thumb-btn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    // タブ切り替え処理（ぼやっと浮かび上がるアニメーション付き）
+    // 表示更新関数（フェードアニメーション付き）
+    function updateDisplay(charId, viewType) {
+      const data = characters[charId];
+      if (!data) return;
+
+      currentCharId = parseInt(charId);
+      currentViewType = viewType;
+
+      // アイコンのアクティブ表示切替
+      thumbBtns.forEach(btn => {
+        if (parseInt(btn.getAttribute('data-char')) === currentCharId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // フェードアウト
+      charImgBox.classList.add('fade-out');
+      charInfoBox.classList.add('fade-out');
+
+      setTimeout(() => {
+        // 画像とデータの差し替え
+        const targetImg = (viewType === 'stand') ? data.standImg : data.bustImg;
+        mainCharImg.src = targetImg;
+        mainCharImg.onerror = () => { mainCharImg.src = './main-image.jpg'; };
+
+        charTag.textContent = data.tag;
+        charNameJp.textContent = data.nameJp;
+        charNameEn.textContent = data.nameEn;
+        charBio.textContent = data.bio;
+        imgTypeBadge.textContent = (viewType === 'stand') ? 'STAND' : 'BUST-UP';
+
+        // フェードイン
+        charImgBox.classList.remove('fade-out');
+        charInfoBox.classList.remove('fade-out');
+      }, 250);
+    }
+
+    // アイコン直接タップ時
     thumbBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const charId = btn.getAttribute('data-char');
-        const data = characters[charId];
-
-        if (!data || btn.classList.contains('active')) return;
-
-        // ボタンの選択状態変更
-        thumbBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // 1. 一旦透明＆少しボカす（フェードアウト）
-        charImgBox.classList.add('fade-out');
-        charInfoBox.classList.add('fade-out');
-
-        setTimeout(() => {
-          // 2. データ書き換え
-          mainCharImg.src = data.standImg;
-          charTag.textContent = data.tag;
-          charNameJp.textContent = data.nameJp;
-          charNameEn.textContent = data.nameEn;
-          charBio.textContent = data.bio;
-
-          // 画像読み込みエラー時のフォールバック（画像がない場合用）
-          mainCharImg.onerror = () => { mainCharImg.src = './main-image.jpg'; };
-
-          // 3. ふわっと浮かび上がらせる（フェードイン）
-          charImgBox.classList.remove('fade-out');
-          charInfoBox.classList.remove('fade-out');
-        }, 300); // 0.3秒後に切り替え
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute('data-char');
+        updateDisplay(id, 'stand');
       });
     });
+
+    // 左右切り替えロジック（スワイプ・矢印共通）
+    function goNext() {
+      if (currentViewType === 'stand') {
+        updateDisplay(currentCharId, 'bust');
+      } else {
+        const nextId = (currentCharId % 2 === 0) ? 1 : currentCharId + 1;
+        updateDisplay(nextId, 'stand');
+      }
+    }
+
+    function goPrev() {
+      if (currentViewType === 'bust') {
+        updateDisplay(currentCharId, 'stand');
+      } else {
+        const prevId = (currentCharId === 1) ? 2 : currentCharId - 1;
+        updateDisplay(prevId, 'bust');
+      }
+    }
+
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
+
+    // スワイプ（タッチ・ドラッグ）機能の実装
+    let startX = 0;
+    let endX = 0;
+
+    charImgBox.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    charImgBox.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diffX = startX - endX;
+      if (Math.abs(diffX) > 40) { // 40px以上のスワイプで検知
+        if (diffX > 0) {
+          goNext(); // 左スワイプ（次へ）
+        } else {
+          goPrev(); // 右スワイプ（前へ）
+        }
+      }
+    }
   </script>
 </body>
 </html>

@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 検索避け（noindex）用メタタグ -->
+<meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>AUTHOR | SATOYAKOUKI</title>
-  <link rel="stylesheet" href="./style.css?v=1.8">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <!-- バージョン 1.7 に指定 -->
+  <link rel="stylesheet" href="./style.css?v=1.9">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- 固定ヘッダー -->
   <header class="site-header">
     <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -20,6 +24,7 @@
     </button>
   </header>
 
+  <!-- ドロップダウンメニュー -->
   <nav class="dropdown-menu" id="dropdownMenu">
     <a href="./index.html">INDEX</a>
     <a href="./character.html">CHARACTER</a>
@@ -27,26 +32,29 @@
     <a href="./author.html">AUTHOR</a>
   </nav>
 
+  <!-- メインコンテンツ -->
   <main class="main-wrapper">
     <div class="content-card author-profile">
       <h1 class="page-title">AUTHOR</h1>
       
-      <h2 class="author-name">maruhara</h2>
-      <p class="author-id">@marumisoka</p>
+      <h2 class="author-name">里夜光輝</h2>
+      <p class="author-id">@maruhara</p>
 
       <p class="author-bio">
-        FF14の自機創作家。冒険者パーティと砂都バディの絵や文を描きます。せっかくなのでサイトを作ってみたかった。
+        一次創作小説を執筆しています。「夜と砂の都」の世界観を中心にダーク＆シックな物語をお届けします。
       </p>
 
+      <!-- SNS・外部リンクボタンエリア -->
       <div class="social-links">
-        <a href="https://x.com/marumisoka" target="_blank" class="social-btn">X (Twitter)</a>
-        <a href="https://privatter.me/user/marumisoka" target="_blank" class="social-btn">privatter</a>
+        <!-- 以下の href="" の中にURL、ボタンの文字を変更してください -->
+        <a href="https://x.com/marumisoka" target="_blank" rel="noopener noreferrer" class="social-btn">X (Twitter)</a>
       </div>
     </div>
   </main>
 
+  <!-- 固定フッター -->
   <footer class="site-footer">
-      <p>&copy;  maruhara / 転載禁止 Do not repost without permission.</p>
+    <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
   </footer>
 
   <script>
