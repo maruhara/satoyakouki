@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!-- 固定ヘッダー（白い区切り線） -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- ↓ キャッシュ無効化（毎回最新を取得させる）タグ ↓ -->
+  <!-- キャッシュ無効化タグ -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <title>タイトル</title>
-  <link rel="stylesheet" href="./style.css?v=1.1">
+  <title>CHARACTER | satoyakouki</title>
+  
+  <!-- バージョンパラメータ付きCSS読み込み -->
+  <link rel="stylesheet" href="./style.css?v=1.2">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
+<body>
 
-<!-- プルダウンメニュー -->
-<nav class="dropdown-menu" id="dropdownMenu">
-  <ul>
-    <li><a href="./index.html">INDEX</a></li>
-    <li><a href="./character.html">CHARACTER</a></li>
-    <li><a href="./story.html">STORY</a></li>
-    <li><a href="./author.html">AUTHOR</a></li>
-  </ul>
-</nav>
+  <!-- 固定ヘッダー -->
+  <header class="site-header">
+    <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
 
-<!-- メインコンテンツ -->
-<main class="main-content">
-  <div class="page-header-title">
-    <h1 class="page-title-en">CHARACTER</h1>
-    <span class="page-title-sub">登場人物</span>
-  </div>
+  <!-- ドロップダウンメニュー -->
+  <nav class="dropdown-menu" id="dropdownMenu">
+    <a href="./index.html">INDEX</a>
+    <a href="./character.html">CHARACTER</a>
+    <a href="./story.html">STORY</a>
+    <a href="./author.html">AUTHOR</a>
+  </nav>
 
-  <!-- キャラクター画像エリア (main-image.jpg を読み込み) -->
-  <div class="image-box" style="margin-bottom: 24px;">
-    <img src="./main-image.jpg" alt="Character Image" class="character-img">
-  </div>
+  <!-- メインコンテンツ -->
+  <main class="main-wrapper">
+    <div class="content-card">
+      <h1 class="page-title">CHARACTER</h1>
 
-  <!-- キャラクタープロフィール情報 -->
-  <div class="glass-card">
-    <span class="team-name">DESERT GUARDIAN</span>
-    <h2 class="name-jp">黒猫の守護者</h2>
-    <div class="name-en">NOIR THE CAT</div>
-    
-    <p class="bio-text">
-      砂の都の静寂を守る神秘的な猫。暗闇に溶け込む黒い毛並みと、月光を反射して金色に輝く瞳を持つ。<br>
-      普段は高層ビルの屋上から不夜城を見下ろしており、都に危険が迫ると密かに影から手助けをするという。
-    </p>
-  </div>
-</main>
+      <div class="character-img-box">
+        <img src="./main-image.jpg" alt="Character Image">
+      </div>
 
-<!-- 固定フッター -->
-<footer class="site-footer">
-  <span class="footer-copy">&copy; satoyakouki / maruhara All Rights Reserved.</span>
-</footer>
+      <div class="char-info">
+        <span class="char-tag">NIGHT & SAND</span>
+        <h2 class="char-name-jp">キャラクター名</h2>
+        <p class="char-name-en">CHARACTER NAME</p>
+        <p class="char-bio">
+          ここにキャラクターのプロフィールや紹介文が入ります。夜と砂の都を舞台に紡がれる物語の登場人物です。
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 固定フッター -->
+  <footer class="site-footer">
+    <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
+  </footer>
+
+  <!-- ハンバーガーメニュー制御スクリプト -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuBtn.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
