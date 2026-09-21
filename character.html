@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索避け（noindex）用メタタグ -->
-<meta name="robots" content="noindex, nofollow">
+  
+  <!-- 検索避け -->
+  <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>CHARACTER | SATOYAKOUKI</title>
   
-  <!-- バージョン 1.8 に指定 -->
-  <link rel="stylesheet" href="./style.css?v=1.9">
+  <!-- バージョン 2.3 に指定 -->
+  <link rel="stylesheet" href="./style.css?v=2.0">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -37,37 +38,31 @@
     <div class="content-card">
       <h1 class="page-title char-title-left">CHARACTER</h1>
 
-      <!-- 画像コンテナ（上部にアイコン＆左右にスワイプ矢印） -->
+      <!-- キャラクター選択用アイコン（独立・左寄せ配置） -->
+      <div class="char-selector-container">
+        <button class="char-thumb-btn active" data-char="1" aria-label="Nor'a Fainne">
+          <img src="./chara1-icon.jpg" alt="Nor'a Fainne Icon" onerror="this.src='./main-image.jpg'">
+        </button>
+        <button class="char-thumb-btn" data-char="2" aria-label="Hyde Gilham">
+          <img src="./chara2-icon.jpg" alt="Hyde Gilham Icon" onerror="this.src='./main-image.jpg'">
+        </button>
+      </div>
+
+      <!-- メイン画像表示エリア（スワイプ対応） -->
       <div class="character-img-box" id="charImgBox">
-        
-        <!-- 画像上のアイコン一覧（右上配置） -->
-        <div class="char-overlay-selector">
-          <button class="char-thumb-btn active" data-char="1" aria-label="Character 1">
-            <img src="./chara1-icon.jpg" alt="Char 1 Icon" onerror="this.src='./main-image.jpg'">
-          </button>
-          <button class="char-thumb-btn" data-char="2" aria-label="Character 2">
-            <img src="./chara2-icon.jpg" alt="Char 2 Icon" onerror="this.src='./main-image.jpg'">
-          </button>
-        </div>
-
-        <!-- スワイプ案内（白い小さな三角矢印） -->
-        <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Previous Image">▲</button>
-        <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="Next Image">▲</button>
-
-        <!-- メイン表示画像（立ち絵 / バストアップ） -->
         <img id="mainCharImg" src="./main-image.jpg" alt="Character Image">
         
-        <!-- 画像タイプインジケーター（STAND / BUST-UP） -->
+        <!-- 画像種別表示（STAND / BUST-UP） -->
         <span class="img-type-badge" id="imgTypeBadge">STAND</span>
       </div>
 
       <!-- プロフィールテキストエリア -->
       <div class="char-info align-left" id="charInfoBox">
-        <span class="char-tag" id="charTag">NIGHT & SAND / 01</span>
-        <h2 class="char-name-jp" id="charNameJp">キャラクター1</h2>
-        <p class="char-name-en" id="charNameEn">FIRST CHARACTER</p>
+        <span class="char-tag" id="charTag">Miqo'te / Moonkeeper</span>
+        <h2 class="char-name-jp" id="charNameJp">Nor'a Fainne</h2>
+        <p class="char-name-en" id="charNameEn">ノル・ア・ファインネ</p>
         <p class="char-bio" id="charBio">
-          1人目のキャラクターのプロフィール文です。画像を左右にスワイプ（フリック）すると、バストアップ画像に切り替わります。
+          1人目のキャラクターのプロフィール文です。左右のスワイプまたは矢印タップで、立ち絵とバストアップ画像が切り替わります。
         </p>
       </div>
 
@@ -79,7 +74,7 @@
     <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
   </footer>
 
-  <!-- スクリプト制御（スワイプ＆切り替え） -->
+  <!-- スクリプト制御 -->
   <script>
     // ハンバーガーメニュー
     const menuBtn = document.getElementById('menuBtn');
@@ -122,8 +117,6 @@
     const charImgBox = document.getElementById('charImgBox');
     const charInfoBox = document.getElementById('charInfoBox');
     const thumbBtns = document.querySelectorAll('.char-thumb-btn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
 
     // 表示更新関数（フェードアニメーション付き）
     function updateDisplay(charId, viewType) {
@@ -133,7 +126,7 @@
       currentCharId = parseInt(charId);
       currentViewType = viewType;
 
-      // アイコンのアクティブ表示切替
+      // アイコンアクティブ表示更新
       thumbBtns.forEach(btn => {
         if (parseInt(btn.getAttribute('data-char')) === currentCharId) {
           btn.classList.add('active');
@@ -142,12 +135,12 @@
         }
       });
 
-      // フェードアウト
+      // 1. フェードアウト
       charImgBox.classList.add('fade-out');
       charInfoBox.classList.add('fade-out');
 
       setTimeout(() => {
-        // 画像とデータの差し替え
+        // 2. データ書き換え
         const targetImg = (viewType === 'stand') ? data.standImg : data.bustImg;
         mainCharImg.src = targetImg;
         mainCharImg.onerror = () => { mainCharImg.src = './main-image.jpg'; };
@@ -158,44 +151,21 @@
         charBio.textContent = data.bio;
         imgTypeBadge.textContent = (viewType === 'stand') ? 'STAND' : 'BUST-UP';
 
-        // フェードイン
+        // 3. フェードイン
         charImgBox.classList.remove('fade-out');
         charInfoBox.classList.remove('fade-out');
       }, 250);
     }
 
-    // アイコン直接タップ時
+    // アイコンタップ時（キャラクター切り替え）
     thumbBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
+      btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-char');
-        updateDisplay(id, 'stand');
+        updateDisplay(id, 'stand'); // キャラクタートグル時は立ち絵表示に戻す
       });
     });
 
-    // 左右切り替えロジック（スワイプ・矢印共通）
-    function goNext() {
-      if (currentViewType === 'stand') {
-        updateDisplay(currentCharId, 'bust');
-      } else {
-        const nextId = (currentCharId % 2 === 0) ? 1 : currentCharId + 1;
-        updateDisplay(nextId, 'stand');
-      }
-    }
-
-    function goPrev() {
-      if (currentViewType === 'bust') {
-        updateDisplay(currentCharId, 'stand');
-      } else {
-        const prevId = (currentCharId === 1) ? 2 : currentCharId - 1;
-        updateDisplay(prevId, 'bust');
-      }
-    }
-
-    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
-    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
-
-    // スワイプ（タッチ・ドラッグ）機能の実装
+    // スワイプ検知処理（立ち絵 ↔ バストアップ 切り替え）
     let startX = 0;
     let endX = 0;
 
@@ -210,12 +180,9 @@
 
     function handleSwipe() {
       const diffX = startX - endX;
-      if (Math.abs(diffX) > 40) { // 40px以上のスワイプで検知
-        if (diffX > 0) {
-          goNext(); // 左スワイプ（次へ）
-        } else {
-          goPrev(); // 右スワイプ（前へ）
-        }
+      if (Math.abs(diffX) > 40) { // 40px以上のスワイプで反応
+        const nextView = (currentViewType === 'stand') ? 'bust' : 'stand';
+        updateDisplay(currentCharId, nextView);
       }
     }
   </script>
