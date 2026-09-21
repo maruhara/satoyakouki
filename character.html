@@ -1,52 +1,47 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARACTER | SPECIAL</title>
-  <link rel="stylesheet" href="./style.css">
-  <!-- カッコいい英字フォント（Google Fonts） -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+<!-- 固定ヘッダー（白い区切り線） -->
+<header class="site-header">
+  <a href="./index.html" class="header-logo">DESERT REALM</a>
+  <button class="menu-trigger" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-  <!-- スマホ幅固定のメインコンテナ -->
-  <main class="site-container">
+<!-- プルダウンメニュー -->
+<nav class="dropdown-menu" id="dropdownMenu">
+  <ul>
+    <li><a href="./index.html">INDEX</a></li>
+    <li><a href="./character.html">CHARACTER</a></li>
+    <li><a href="./story.html">STORY</a></li>
+    <li><a href="./author.html">AUTHOR</a></li>
+  </ul>
+</nav>
 
-    <!-- ヘッダー英字ロゴ飾り -->
-    <header class="card-header">
-      <span class="sub-tag">// NEW STYLE COLLECTION</span>
-      <h1 class="logo-title">cozmez</h1>
-    </header>
+<!-- メインコンテンツ -->
+<main class="main-content">
+  <div class="page-header-title">
+    <h1 class="page-title-en">CHARACTER</h1>
+    <span class="page-title-sub">登場人物</span>
+  </div>
 
-    <!-- キャラクターメイン画像エリア -->
-    <div class="character-card">
-      <div class="image-box">
-        <!-- 差し替え画像 -->
-        <img src="main-image.jpg" alt="character" class="character-img">
-        <!-- 画像上のネオン枠装飾 -->
-        <div class="frame-overlay"></div>
-      </div>
-    </div>
+  <!-- キャラクター画像エリア (main-image.jpg を読み込み) -->
+  <div class="image-box" style="margin-bottom: 24px;">
+    <img src="./main-image.jpg" alt="Character Image" class="character-img">
+  </div>
 
-    <!-- 下部テキスト＆情報エリア -->
-    <section class="info-section">
-      <div class="character-name-box">
-        <span class="team-name">BAE / cozmez</span>
-        <h2 class="name-jp">矢戸乃上 珂波汰</h2>
-        <p class="name-en">KANATA YATONOKAMI</p>
-      </div>
+  <!-- キャラクタープロフィール情報 -->
+  <div class="glass-card">
+    <span class="team-name">DESERT GUARDIAN</span>
+    <h2 class="name-jp">黒猫の守護者</h2>
+    <div class="name-en">NOIR THE CAT</div>
+    
+    <p class="bio-text">
+      砂の都の静寂を守る神秘的な猫。暗闇に溶け込む黒い毛並みと、月光を反射して金色に輝く瞳を持つ。<br>
+      普段は高層ビルの屋上から不夜城を見下ろしており、都に危険が迫ると密かに影から手助けをするという。
+    </p>
+  </div>
+</main>
 
-      <p class="bio-text">
-        ここにキャラクターのセリフや紹介文を入力します。ストリート感のあるダークな世界観に合わせてネオンや透過グラデーションを効かせています。
-      </p>
-
-      <div class="btn-group">
-        <a href="#" class="btn-primary">MORE DETAILS</a>
-      </div>
-    </section>
-
-  </main>
-
-</body>
-</html>
+<!-- 固定フッター -->
+<footer class="site-footer">
+  <span class="footer-copy">&copy; satoyakouki / maruhara All Rights Reserved.</span>
+</footer>

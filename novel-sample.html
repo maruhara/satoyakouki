@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第一章：黄金の幻影と月夜の歌 | STORY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="novel-page-body">
+
+  <div class="site-container">
+
+    <header class="site-header">
+      <a href="./index.html" class="header-logo">DESERT REALM</a>
+      <button class="menu-trigger" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="./index.html">INDEX</a></li>
+        <li><a href="./character.html">CHARACTER</a></li>
+        <li><a href="./story.html">STORY</a></li>
+        <li><a href="./author.html">AUTHOR</a></li>
+      </ul>
+    </nav>
+
+    <!-- メインコンテンツ（背景固定・文字のみ縦スクロール） -->
+    <main class="main-content">
+      
+      <article class="novel-card">
+        <header class="novel-header">
+          <h1 class="novel-title">第一章：黄金の幻影と月夜の歌</h1>
+          <div style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--text-sub);">Word Count: 3,000</div>
+        </header>
+
+        <p class="novel-p">
+          静寂の夜が深く降り積もる砂の都。風が吹き抜けるたび、かつて繁栄を極めた古代都市の記憶を語り継ぐように微かな音が響く。
+        </p>
+        <p class="novel-p">
+          高層のテラスに佇む人影は、静かに月を見上げていた。黒い衣に施された細やかな金の刺繍が、蒼い月光を受けて淡い光を放っている。
+        </p>
+        <p class="novel-p">
+          「今夜も静かな夜だな」
+        </p>
+        <p class="novel-p">
+          静かな呟きは夜風に溶け込み、遠く広がる夜の砂漠へと消えていった。
+        </p>
+
+        <div style="margin-top: 40px; text-align: center;">
+          <a href="./story.html" class="btn-gold" style="display: inline-block; width: 60%;">STORY LIST</a>
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-copy">&copy; satoyakouki / maruhara All Rights Reserved.</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      dropdownMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

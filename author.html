@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTHOR | DESERT REALM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="site-container">
+
+    <header class="site-header">
+      <a href="./index.html" class="header-logo">DESERT REALM</a>
+      <button class="menu-trigger" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="./index.html">INDEX</a></li>
+        <li><a href="./character.html">CHARACTER</a></li>
+        <li><a href="./story.html">STORY</a></li>
+        <li><a href="./author.html">AUTHOR</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <div class="page-header-title">
+        <h1 class="page-title-en">AUTHOR</h1>
+        <span class="page-title-sub">制作者情報</span>
+      </div>
+
+      <div class="glass-card author-profile">
+        <img src="./main-image.jpg" alt="satoyakouki" class="author-avatar">
+        <h2 class="author-name">satoyakouki</h2>
+        <div class="author-id">@maruhara</div>
+        
+        <p class="author-bio">
+          シックな世界観とストーリーを表現する創作ギャラリースペースです。夜と砂の都をイメージした静かな空間で物語をお楽しみください。
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <h3 style="font-family: 'Cinzel'; font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 12px;">ACCOUNT</h3>
+        <a href="https://x.com" target="_blank" class="btn-gold">X (旧Twitter)</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-copy">&copy; satoyakouki / maruhara All Rights Reserved.</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      dropdownMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
