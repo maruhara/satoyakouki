@@ -9,13 +9,13 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>キャラクター | 砂都夜行記</title>
   
-  <!-- バージョン 1.0 に固定 -->
+  <!-- バージョン 1.0 に指定 -->
   <link rel="stylesheet" href="./style.css?v=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- 固定ヘッダー（砂都夜行記 に統一） -->
+  <!-- 固定ヘッダー -->
   <header class="site-header">
     <a href="./index.html" class="header-logo">砂都夜行記</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -50,15 +50,14 @@
 
       <!-- メイン画像表示エリア -->
       <div class="character-img-box" id="charImgBox">
-        
-        <!-- 画像背面の重ねグラデーション背景 -->
+        <!-- 画像背面のグラデーションレイヤー -->
         <div class="char-bg-overlay"></div>
 
-        <!-- 矢印ボタン（初期バストアップ時は立ち絵へ進む右矢印を表示） -->
-        <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Bust-up" style="display: none;">▲</button>
+        <!-- 矢印ナビボタン -->
+        <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Bust-up">▲</button>
         <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="To Stand">▲</button>
 
-        <!-- メイン画像（初期状態：キャラクター1のバストアップ） -->
+        <!-- メイン画像 -->
         <img id="mainCharImg" src="./nora_bust.png" alt="Nor'a Fainne">
         
         <!-- 画像種別表示 -->
@@ -112,7 +111,7 @@
       }
     };
 
-    // 画像プリロード（事前読み込み）処理
+    // 画像プリロード処理
     const preloadedImages = [];
     function preloadAllImages() {
       Object.values(characters).forEach(c => {
@@ -143,7 +142,7 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    // 表示更新関数（高速切り替え＆フェード）
+    // 表示更新関数
     function updateDisplay(charId, viewType) {
       const data = characters[charId];
       if (!data) return;
@@ -151,7 +150,6 @@
       currentCharId = parseInt(charId);
       currentViewType = viewType;
 
-      // アイコンのアクティブ状態切り替え
       thumbBtns.forEach(btn => {
         if (parseInt(btn.getAttribute('data-char')) === currentCharId) {
           btn.classList.add('active');
@@ -160,7 +158,6 @@
         }
       });
 
-      // 瞬時に軽量フェードアウト
       charImgBox.classList.add('fade-out');
       charInfoBox.classList.add('fade-out');
 
@@ -175,7 +172,6 @@
         charBio.textContent = data.bio;
         imgTypeBadge.textContent = (viewType === 'stand') ? 'STAND' : 'BUST-UP';
 
-        // 矢印切り替え（バストアップ時は右矢印で立ち絵へ、立ち絵時は左矢印でバストアップへ）
         if (viewType === 'bust') {
           prevBtn.style.display = 'none';
           nextBtn.style.display = 'flex';
@@ -195,7 +191,7 @@
       updateDisplay(1, 'bust');
     });
 
-    // アイコンタップ時（キャラクター切り替え：バストアップ表示優先）
+    // アイコンタップ時
     thumbBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-char');
@@ -206,12 +202,12 @@
     // 矢印ボタンタップ時
     nextBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateDisplay(currentCharId, 'stand'); // バストアップ → 立ち絵へ
+      updateDisplay(currentCharId, 'stand');
     });
 
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateDisplay(currentCharId, 'bust'); // 立ち絵 → バストアップへ
+      updateDisplay(currentCharId, 'bust');
     });
 
     // スワイプ処理
@@ -231,9 +227,9 @@
       const diffX = startX - endX;
       if (Math.abs(diffX) > 40) {
         if (diffX > 0 && currentViewType === 'bust') {
-          updateDisplay(currentCharId, 'stand'); // 左スワイプで立ち絵へ
+          updateDisplay(currentCharId, 'stand');
         } else if (diffX < 0 && currentViewType === 'stand') {
-          updateDisplay(currentCharId, 'bust'); // 右スワイプでバストアップへ
+          updateDisplay(currentCharId, 'bust');
         }
       }
     }
