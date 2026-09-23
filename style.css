@@ -193,7 +193,7 @@ body {
   display: block;
 }
 
-/* 画像表示枠：透過PNG用の薄い半透明グレー背景 */
+/* 画像表示枠：低彩度・半透明グレーのグラデーション背景 */
 .character-img-box {
   position: relative;
   width: 100%;
@@ -201,10 +201,10 @@ body {
   border-radius: 8px;
   overflow: hidden;
   
-  /* 薄い半透明ダークグレーのグラデーション背景 */
-  background: linear-gradient(180deg, rgba(20, 23, 30, 0.85) 0%, rgba(12, 14, 18, 0.95) 100%);
-  border: 1px solid rgba(197, 160, 89, 0.35);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+  /* 明るめの半透明グレーから深みのあるグレーへのグラデーション */
+  background: linear-gradient(180deg, rgba(80, 85, 95, 0.6) 0%, rgba(40, 43, 50, 0.85) 100%) !important;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
   
   margin-bottom: 20px;
   user-select: none;
@@ -212,102 +212,12 @@ body {
   transition: opacity 0.25s ease, filter 0.25s ease;
 }
 
+/* 画像本体：containに変更して背景が見えるように修正 */
 .character-img-box img#mainCharImg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* coverからcontainに変更（画像全域で背景を覆わない） */
   display: block;
-}
-
-.swipe-arrow {
-  position: absolute;
-  top: 50%;
-  background: rgba(10, 11, 13, 0.55);
-  color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 0.65rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 10;
-  backdrop-filter: blur(2px);
-  transition: all 0.2s ease;
-}
-
-.swipe-arrow.arrow-left {
-  left: 10px;
-  transform: translateY(-50%) rotate(-90deg);
-}
-
-.swipe-arrow.arrow-right {
-  right: 10px;
-  transform: translateY(-50%) rotate(90deg);
-}
-
-.swipe-arrow:hover {
-  background: rgba(197, 160, 89, 0.8);
-  color: #0a0b0d;
-}
-
-.img-type-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: rgba(10, 11, 13, 0.8);
-  color: #c5a059;
-  font-family: 'Cinzel', sans-serif;
-  font-size: 0.65rem;
-  padding: 3px 8px;
-  border-radius: 4px;
-  border: 1px solid rgba(197, 160, 89, 0.4);
-  letter-spacing: 0.1em;
-  pointer-events: none;
-}
-
-.char-info.align-left {
-  text-align: left;
-  transition: opacity 0.25s ease, filter 0.25s ease;
-}
-
-.fade-out {
-  opacity: 0 !important;
-  filter: blur(5px) !important;
-}
-
-.char-tag {
-  font-family: 'Cinzel', sans-serif;
-  font-size: 0.75rem;
-  color: #c5a059;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.char-name-jp {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2px;
-  color: #ffffff;
-}
-
-.char-name-en {
-  font-family: 'Cinzel', sans-serif;
-  font-size: 0.8rem;
-  color: #8a8d9b;
-  letter-spacing: 0.1em;
-  margin-bottom: 16px;
-}
-
-.char-bio {
-  font-size: 0.88rem;
-  line-height: 1.8;
-  color: #d1d5db;
-  border-left: 2px solid #c5a059;
-  padding-left: 12px;
 }
 
 /* ==========================================
