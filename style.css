@@ -52,7 +52,7 @@ body {
 }
 
 .header-logo {
-  font-family: 'Cinzel', sans-serif;
+  font-family: 'Cinzel', 'Zen Kaku Gothic New', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   color: #c5a059;
@@ -155,6 +155,45 @@ body {
 /* ==========================================
    4. Character ページ専用（透過画像背面の重ねグラデ背景）
    ========================================== */
+.char-selector-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.char-thumb-btn {
+  background: rgba(10, 11, 13, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.char-thumb-btn:hover {
+  opacity: 0.85;
+}
+
+.char-thumb-btn.active {
+  border-color: #c5a059;
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+}
+
+.char-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 画像表示枠：縦横比 5:11 */
 .character-img-box {
   position: relative;
   width: 100%;
@@ -166,7 +205,8 @@ body {
   margin-bottom: 20px;
   user-select: none;
   touch-action: pan-y;
-  background-color: transparent; /* 枠自体は透明 */
+  background-color: transparent;
+  transition: opacity 0.25s ease, filter 0.25s ease;
 }
 
 /* キャラクター画像の後ろだけに重ねる低彩度グラデーション */
@@ -176,16 +216,18 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* 画像（z-index: 2）の後ろに配置 */
-  background: linear-gradient(180deg, rgba(70, 75, 85, 0.5) 0%, rgba(30, 33, 40, 0.8) 100%);
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(70, 75, 85, 0.55) 0%, rgba(30, 33, 40, 0.85) 100%);
   border-radius: 8px;
   pointer-events: none;
 }
 
-/* キャラクター画像本体 */
+/* メイン画像本体：はみ出し防止＆背景透過 */
 .character-img-box img#mainCharImg {
-  position: relative;
-  z-index: 2; /* 背景の上に表示 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -193,13 +235,98 @@ body {
   background: transparent !important;
 }
 
-/* 矢印やバッジも画像の上（前景）に配置 */
+/* 矢印ナビ */
 .swipe-arrow {
+  position: absolute;
+  top: 50%;
+  background: rgba(10, 11, 13, 0.55);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 0.65rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  transition: all 0.2s ease;
+}
+
+.swipe-arrow.arrow-left {
+  left: 10px;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.swipe-arrow.arrow-right {
+  right: 10px;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.swipe-arrow:hover {
+  background: rgba(197, 160, 89, 0.8);
+  color: #0a0b0d;
+}
+
+/* STAND / BUST-UP 表示バッジ */
+.img-type-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(10, 11, 13, 0.8);
+  color: #c5a059;
+  font-family: 'Cinzel', sans-serif;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  letter-spacing: 0.1em;
+  pointer-events: none;
   z-index: 10;
 }
 
-.img-type-badge {
-  z-index: 10;
+.char-info.align-left {
+  text-align: left;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  filter: blur(5px) !important;
+}
+
+.char-tag {
+  font-family: 'Cinzel', sans-serif;
+  font-size: 0.75rem;
+  color: #c5a059;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.char-name-jp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: #ffffff;
+}
+
+.char-name-en {
+  font-family: 'Cinzel', sans-serif;
+  font-size: 0.8rem;
+  color: #8a8d9b;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.char-bio {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  border-left: 2px solid #c5a059;
+  padding-left: 12px;
 }
 
 /* ==========================================
@@ -298,7 +425,7 @@ body {
 }
 
 .logo-title {
-  font-family: 'Cinzel', sans-serif;
+  font-family: 'Cinzel', 'Zen Kaku Gothic New', sans-serif;
   font-size: 2.2rem;
   color: #c5a059;
   letter-spacing: 0.2em;
