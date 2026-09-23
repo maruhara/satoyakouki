@@ -153,71 +153,53 @@ body {
 }
 
 /* ==========================================
-   4. Character ページ専用（透過画像用背景設定）
+   4. Character ページ専用（透過画像背面の重ねグラデ背景）
    ========================================== */
-.char-selector-container {
-  display: flex;
-  justify-content: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.char-thumb-btn {
-  background: rgba(10, 11, 13, 0.6);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  padding: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0.6;
-}
-
-.char-thumb-btn:hover {
-  opacity: 0.85;
-}
-
-.char-thumb-btn.active {
-  border-color: #c5a059;
-  opacity: 1;
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
-}
-
-.char-thumb-btn img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 画像表示枠：低彩度・半透明グレーのグラデーション背景 */
 .character-img-box {
   position: relative;
   width: 100%;
   aspect-ratio: 5 / 11;
   border-radius: 8px;
   overflow: hidden;
-  
-  /* 明るめの半透明グレーから深みのあるグレーへのグラデーション */
-  background: linear-gradient(180deg, rgba(80, 85, 95, 0.6) 0%, rgba(40, 43, 50, 0.85) 100%) !important;
   border: 1px solid rgba(197, 160, 89, 0.4);
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
-  
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
   user-select: none;
   touch-action: pan-y;
-  transition: opacity 0.25s ease, filter 0.25s ease;
+  background-color: transparent; /* 枠自体は透明 */
 }
 
-/* 画像本体：containに変更して背景が見えるように修正 */
-.character-img-box img#mainCharImg {
+/* キャラクター画像の後ろだけに重ねる低彩度グラデーション */
+.char-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* coverからcontainに変更（画像全域で背景を覆わない） */
+  z-index: 1; /* 画像（z-index: 2）の後ろに配置 */
+  background: linear-gradient(180deg, rgba(70, 75, 85, 0.5) 0%, rgba(30, 33, 40, 0.8) 100%);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* キャラクター画像本体 */
+.character-img-box img#mainCharImg {
+  position: relative;
+  z-index: 2; /* 背景の上に表示 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
+  background: transparent !important;
+}
+
+/* 矢印やバッジも画像の上（前景）に配置 */
+.swipe-arrow {
+  z-index: 10;
+}
+
+.img-type-badge {
+  z-index: 10;
 }
 
 /* ==========================================
