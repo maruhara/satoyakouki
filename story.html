@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索避け（noindex）用メタタグ -->
-<meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>STORY | SATOYAKOUKI</title>
-  <link rel="stylesheet" href="./style.css?v=2.3">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <title>ストーリー | SATOYAKOUKI</title>
+  
+  <link rel="stylesheet" href="./style.css?v=2.7">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- 固定ヘッダー -->
   <header class="site-header">
-    <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
+    <a href="./index.html" class="header-logo">砂都夜行記</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <span></span>
       <span></span>
@@ -22,6 +22,7 @@
     </button>
   </header>
 
+  <!-- ドロップダウンメニュー -->
   <nav class="dropdown-menu" id="dropdownMenu">
     <a href="./index.html">INDEX</a>
     <a href="./character.html">CHARACTER</a>
@@ -29,22 +30,26 @@
     <a href="./author.html">AUTHOR</a>
   </nav>
 
+  <!-- メインコンテンツ -->
   <main class="main-wrapper">
     <div class="content-card">
-      <h1 class="page-title">STORY LIST</h1>
-
+      <h1 class="page-title">STORY</h1>
+      
+      <!-- ストーリー作品リスト -->
       <div class="story-list">
-        <a href="./novel-sample.html" class="story-card">
-          <span class="story-num">EPISODE 01</span>
-          <h2 class="story-title">夜と砂の都</h2>
-          <p class="story-desc">静寂の夜に包まれた砂の都で繰り広げられる、二人の物語。</p>
+        <a href="./novel-sample.html" class="story-item-btn">
+          <span class="story-tag">SHORT STORY / 01</span>
+          <h2 class="story-item-title">サンプル小説タイトル</h2>
+          <p class="story-item-desc">短編小説のあらすじやキャッチコピーをここに記述します。</p>
         </a>
       </div>
+
     </div>
   </main>
 
+<!-- 固定フッター -->
   <footer class="site-footer">
-    <p>&copy;  maruhara / 転載禁止 Do not repost without permission.</p>
+    <p>maruhara / 転載禁止 Do not repost without permission.</p>
   </footer>
 
   <script>

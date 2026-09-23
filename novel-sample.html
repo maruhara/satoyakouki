@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索避け（noindex）用メタタグ -->
-<meta name="robots" content="noindex, nofollow">
+  
+  <!-- 検索避け -->
+  <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>夜と砂の都 | NOVEL</title>
-  <link rel="stylesheet" href="./style.css?v=2.3">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
-  <body>
+  <title>サンプル小説 | SATOYAKOUKI</title>
+  
+  <!-- CSS読み込み（バージョン 2.7 に指定） -->
+  <link rel="stylesheet" href="./style.css?v=2.7">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+  <!-- 固定ヘッダー -->
   <header class="site-header">
-    <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
+    <a href="./index.html" class="header-logo">砂都夜行記</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <span></span>
       <span></span>
@@ -21,6 +25,7 @@
     </button>
   </header>
 
+  <!-- ドロップダウンメニュー -->
   <nav class="dropdown-menu" id="dropdownMenu">
     <a href="./index.html">INDEX</a>
     <a href="./character.html">CHARACTER</a>
@@ -28,59 +33,43 @@
     <a href="./author.html">AUTHOR</a>
   </nav>
 
-  <div class="novel-wrapper">
-    <article class="novel-card">
-      <h1 class="page-title">夜と砂の都</h1>
-      <div class="novel-text">
-        <p>砂都もやや涼しくなる時間だ。刺すような輝きの陽の光が届かなくなるほど、陰の中は熱を蓄えられずに徐々に冷えていく。ようやく俺の目に丁度いい明るさになってきた表の通りを、道行く人を特に考えずに眺めていた。
+  <!-- メインコンテンツ -->
+  <main class="main-wrapper">
+    <div class="content-card">
+      
+      <!-- 小説ラッパー（上下左右に余白を確保） -->
+      <article class="novel-wrapper">
+        <h1 class="novel-title">サンプル小説タイトル</h1>
+        <p class="novel-subtitle">NIGHT & SAND / SHORT STORY</p>
 
-魔道具店はいつも昼過ぎに開店する。早ければ13時とか14時とか…遅ければ夕暮れに…つまりは俺が起きれた時間に開けている。
+        <!-- 本文エリア -->
+        <div class="novel-body">
+          <p>
+            夜の静寂が都を包み込む頃、砂の風が小さく吹き抜けた。街灯の明かりが石畳を淡く照らし、影が静かに伸びていく。
+          </p>
+          <p>
+            「ここにいたのか」
+          </p>
+          <p>
+            低く落ち着いた声が聞こえ、振り返ると彼は静かにたたずんでいた。月に照らされたその瞳には、どこか遠い日の記憶が映っているようだった。
+          </p>
+          <p>
+            言葉を交わさずとも、互いの存在が夜の冷たさを少しだけ和らげていく。砂の都の夜は、今日も静かに更けていくのだった。
+          </p>
+        </div>
 
-そこで唐突に、ふっと静かに音もなく、窓の外に人影が現れた。それは背が高く薄く…気味の悪い感じで…ひょっとして幽霊なのではないか、と思わせる。影はゆっくりと店のショーウィンドウを横切っていき…店舗の入り口の前で動きを止めた。じっと中を窺っているようである。幽霊が、何のようで？
+        <!-- 一覧へ戻るボタン -->
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="./story.html" class="social-btn" style="display: inline-block; width: auto; padding: 10px 24px;">STORY LIST</a>
+        </div>
+      </article>
 
-カウンターから遠隔で鍵をかける魔法的仕掛けを開発したい、と思い付いた。それなりに需要があるかもしれないし、構造としては簡単そう。やれなくもなさそうだ。まあ幽霊に鍵が有効かは知らないけど。
+    </div>
+  </main>
 
-青白い大きな、細長く節張った指がドアに押し当てられ….古い蝶番が軋む不穏な音と共にドアが開かれた。どうやら幽霊は質量を持っており、現世に干渉出来るらしく。幽霊と俺を遮るものは無くなってしまった。
-
-手と同じ色の、血の通っているか訝しい顔が現れ、憂鬱そうな表情を貼り付けている。しかしその中央の瞳だけは、影の中にも関わらず金色に光っている。
-
-「…なぜ幽霊でも見たような顔をしている。」
-
-「…暇つぶしの空想だよ。あんた何も買わないんだから幽霊も一緒。」
-
-俺の軽口(兼嫌味)を理解したのかしていないのか、そもそも興味がなさそうに、返答はせず無遠慮に男は店の奥へと足を踏み入れてきた。そして変わらず無気力な視線で棚の上の商品を眺めている。何度も見飽きた流れだ。
-
-彼はちょっとした知り合い。砂都で旅人には見かけど、暮らすには珍しいエレゼン族。名はハイド・ギラム…と身元証明書を買う時に決めた、と言っていた。つまりワケありなのだろうがここでは大して珍しくもないし…探るのはカッターズクライに踏み入れるようなものであるので、詳しくは聞かない。ただの知り合い、だ。付け足すなら、何も買わない、ただの知り合い。
-
-…何かご入用で？とか、お困りですか？とか接客の文句は勿論気さくにするように心がけているが、彼にそう声を掛けて………まあ紆余曲折あり、こいつはうちの客にはなりえないと判断したので、俺はやることはない。いるのもいないのも同じ。
-
-ただ店を訪れる者の服装をチェックするのは俺の癖だ…人を見る目のある従兄弟に説かれてから。爪先の輝く上等な革の靴。胸元に精細なフリルと貫き留めるシェルカメオのブローチ、それらを包むおそらくはビスポークのスーツは、彼の種族ならではの細長い手脚のシルエットをより映えさせていた。きっとサンシルクの仕立てなのだろう。揃えるには金のかかるだろう逸品の衣裳に劣らない、彫刻のような小綺麗な顔をしているのが、少し憎たらしい。
-
-さあ面倒な観察も終わりにしてもう本題に入ろう。そんなお上品な男がなぜうちの薄暗い魔術店に踏み入れているのかというと、こいつがまさしく黒魔導を収める者で、夜な夜な研究に使うべく品を物色しにきたのかと言えば、そんなことはない。ウルダハにあるものは全て少し齧っているようだが、魔術はあまり求めていないらしい。お客様じゃないのだこいつは。では何故来ているかというと…大抵は…まあ…。
-
-「まだ店は閉めないよ。」
-
-俺は溜息を隠さず言った。ハイドが振り返って俺を見た。特に変わらず無表情。
-
-「…どうせこの時間に人は来ないだろう。」
-
-「そんなことない。寧ろ夜じゃなきゃ、って背景の客はいるもんだ。」
-
-「今日はその客は来ない日だ。」
-
-言い切りやがった。
-
-「行こう。に良い樽が入ったそうだ。」
-
-そう言って徐にハイドは看板を裏返した。俺は何度目かわからない溜息をついた。</p>
-
-        <p>（本文が長くなっても枠内だけで快適に読書ができます）</p>
-      </div>
-    </article>
-  </div>
-
+  <!-- 固定フッター -->
   <footer class="site-footer">
-      <p>&copy;  maruhara / 転載禁止 Do not repost without permission.</p>
+    <p>maruhara / 転載禁止 Do not repost without permission.</p>
   </footer>
 
   <script>

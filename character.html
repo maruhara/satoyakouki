@@ -9,15 +9,15 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>キャラクター | SATOYAKOUKI</title>
   
-  <!-- バージョン 2.5 に指定 -->
-  <link rel="stylesheet" href="./style.css?v=2.3">
+  <!-- バージョン 2.7 に指定 -->
+  <link rel="stylesheet" href="./style.css?v=2.7">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- 固定ヘッダー -->
   <header class="site-header">
-    <a href="./index.html" class="header-logo">SATOYAKOUKI</a>
+    <a href="./index.html" class="header-logo">砂都夜行記</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <span></span>
       <span></span>
@@ -38,25 +38,24 @@
     <div class="content-card">
       <h1 class="page-title char-title-left">CHARACTER</h1>
 
-      <!-- キャラクター選択用アイコン（独立・左寄せ配置） -->
+      <!-- キャラクター選択用アイコン -->
       <div class="char-selector-container">
         <button class="char-thumb-btn active" data-char="1" aria-label="Nor'a Fainne">
-          <img src="./nora-icon.png" alt="Nor'a Fainne Icon" onerror="this.src='./main-image.jpg'">
+          <img src="./nora-icon.png" alt="Nor'a Fainne Icon" onerror="this.src='./nora_stand.png'">
         </button>
         <button class="char-thumb-btn" data-char="2" aria-label="Hyde Gilham">
-          <img src="./hyde-icon.png" alt="Hyde Gilham Icon" onerror="this.src='./main-image.jpg'">
+          <img src="./hyde-icon.png" alt="Hyde Gilham Icon" onerror="this.src='./nora_stand.png'">
         </button>
       </div>
 
       <!-- メイン画像表示エリア -->
       <div class="character-img-box" id="charImgBox">
-        
-        <!-- 片側ずつ表示する白い小さな三角矢印ナビ -->
+        <!-- 白い小さな三角矢印ナビ -->
         <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Stand" style="display: none;">▲</button>
         <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="To Bust-up">▲</button>
 
-        <!-- メイン画像 -->
-        <img id="mainCharImg" src="./nora_stand.png" alt="Character Image">
+        <!-- メイン画像（初期状態はキャラクター1の立ち絵） -->
+        <img id="mainCharImg" src="./nora_stand.png" alt="Nor'a Fainne">
         
         <!-- 画像種別表示（STAND / BUST-UP） -->
         <span class="img-type-badge" id="imgTypeBadge">STAND</span>
@@ -68,16 +67,16 @@
         <h2 class="char-name-jp" id="charNameJp">Nor'a Fainne</h2>
         <p class="char-name-en" id="charNameEn">ノル・ア・ファインネ</p>
         <p class="char-bio" id="charBio">
-          1人目のキャラクターのプロフィール文です。アイコンタップでキャラ変更、右矢印でバストアップ画像へ、左矢印で立ち絵へ戻ります。
+          1人目のキャラクターのプロフィール文です。上のアイコンでキャラ変更、右矢印でバストアップ画像、左矢印で立ち絵画像に切り替わります。
         </p>
       </div>
 
     </div>
   </main>
 
-  <!-- 固定フッター -->
+<!-- 固定フッター -->
   <footer class="site-footer">
-    <p>&copy; satoyakouki / maruhara All Rights Reserved.</p>
+    <p>maruhara / 転載禁止 Do not repost without permission.</p>
   </footer>
 
   <!-- スクリプト制御 -->
@@ -89,7 +88,7 @@
       dropdownMenu.classList.toggle('active');
     });
 
-    // キャラクター＆画像データ
+    // キャラクター＆画像データ（新ファイル名 PNG 対応）
     const characters = {
       1: {
         tag: "Miqo'te / Moonkeeper",
@@ -110,7 +109,7 @@
     };
 
     let currentCharId = 1;
-    let currentViewType = 'stand'; // 'stand' または 'bust'
+    let currentViewType = 'stand';
 
     // DOM要素
     const mainCharImg = document.getElementById('mainCharImg');
@@ -126,7 +125,7 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    // 表示更新関数（フェードアニメーション＆矢印表示切り替え）
+    // 表示更新関数
     function updateDisplay(charId, viewType) {
       const data = characters[charId];
       if (!data) return;
@@ -134,7 +133,7 @@
       currentCharId = parseInt(charId);
       currentViewType = viewType;
 
-      // アイコンアクティブ表示更新
+      // アイコン表示更新
       thumbBtns.forEach(btn => {
         if (parseInt(btn.getAttribute('data-char')) === currentCharId) {
           btn.classList.add('active');
@@ -143,15 +142,15 @@
         }
       });
 
-      // 1. フェードアウト
+      // フェードアウト
       charImgBox.classList.add('fade-out');
       charInfoBox.classList.add('fade-out');
 
       setTimeout(() => {
-        // 2. データ書き換え
+        // データ書き換え
         const targetImg = (viewType === 'stand') ? data.standImg : data.bustImg;
         mainCharImg.src = targetImg;
-        mainCharImg.onerror = () => { mainCharImg.src = './main-image.jpg'; };
+        mainCharImg.onerror = () => { mainCharImg.src = './nora_stand.png'; };
 
         charTag.textContent = data.tag;
         charNameJp.textContent = data.nameJp;
@@ -159,7 +158,7 @@
         charBio.textContent = data.bio;
         imgTypeBadge.textContent = (viewType === 'stand') ? 'STAND' : 'BUST-UP';
 
-        // 3. 矢印の表示切り替え（STAND時は右矢印のみ、BUST-UP時は左矢印のみ）
+        // 矢印の切り替え
         if (viewType === 'stand') {
           prevBtn.style.display = 'none';
           nextBtn.style.display = 'flex';
@@ -168,13 +167,18 @@
           nextBtn.style.display = 'none';
         }
 
-        // 4. フェードイン
+        // フェードイン
         charImgBox.classList.remove('fade-out');
         charInfoBox.classList.remove('fade-out');
       }, 250);
     }
 
-    // アイコンタップ時（キャラクター切り替え：立ち絵表示に戻す）
+    // 初期化（ページ読み込み時に1人目の立ち絵をセット）
+    window.addEventListener('DOMContentLoaded', () => {
+      updateDisplay(1, 'stand');
+    });
+
+    // アイコンタップ時
     thumbBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-char');
@@ -182,18 +186,18 @@
       });
     });
 
-    // 矢印ボタンタップ処理
+    // 矢印ボタンタップ時
     nextBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateDisplay(currentCharId, 'bust'); // 右矢印タップでバストアップへ
+      updateDisplay(currentCharId, 'bust');
     });
 
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateDisplay(currentCharId, 'stand'); // 左矢印タップで立ち絵へ戻る
+      updateDisplay(currentCharId, 'stand');
     });
 
-    // スワイプ処理（左スワイプでバストアップへ、右スワイプで立ち絵へ戻る）
+    // スワイプ処理
     let startX = 0;
     let endX = 0;
 
@@ -210,10 +214,8 @@
       const diffX = startX - endX;
       if (Math.abs(diffX) > 40) {
         if (diffX > 0 && currentViewType === 'stand') {
-          // 左にスワイプ（＝右へ進む動作）でバストアップへ
           updateDisplay(currentCharId, 'bust');
         } else if (diffX < 0 && currentViewType === 'bust') {
-          // 右にスワイプ（＝左へ戻る動作）で立ち絵へ
           updateDisplay(currentCharId, 'stand');
         }
       }
