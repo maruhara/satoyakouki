@@ -48,14 +48,14 @@
         </button>
       </div>
 
-      <!-- メイン画像表示エリア -->
-      <div class="character-img-box" id="charImgBox">
-        <!-- 初期表示（バストアップ）時は立ち絵へ進む右矢印を表示 -->
+      <!-- メイン画像表示エリア（インラインスタイルで背景を直接指定） -->
+      <div class="character-img-box" id="charImgBox" style="background: linear-gradient(180deg, rgba(80, 85, 95, 0.65) 0%, rgba(35, 38, 45, 0.85) 100%) !important;">
+        <!-- 矢印ボタン -->
         <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Bust-up" style="display: none;">▲</button>
         <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="To Stand">▲</button>
 
-        <!-- メイン画像 -->
-        <img id="mainCharImg" src="./nora_bust.png" alt="Nor'a Fainne">
+        <!-- メイン画像（背景を透過させるため背景なしで配置） -->
+        <img id="mainCharImg" src="./nora_bust.png" alt="Nor'a Fainne" style="background: transparent !important; object-fit: contain;">
         
         <!-- 画像種別表示 -->
         <span class="img-type-badge" id="imgTypeBadge">BUST-UP</span>
@@ -139,7 +139,7 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    // 表示更新関数（バストアップ ⇄ 立ち絵）
+    // 表示更新関数
     function updateDisplay(charId, viewType) {
       const data = characters[charId];
       if (!data) return;
@@ -169,7 +169,6 @@
         charBio.textContent = data.bio;
         imgTypeBadge.textContent = (viewType === 'stand') ? 'STAND' : 'BUST-UP';
 
-        // 矢印制御：バストアップ時は右矢印（立ち絵へ進む）、立ち絵時は左矢印（バストアップへ戻る）
         if (viewType === 'bust') {
           prevBtn.style.display = 'none';
           nextBtn.style.display = 'flex';
@@ -200,12 +199,12 @@
     // 矢印ボタンタップ時
     nextBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateDisplay(currentCharId, 'stand'); // バストアップ → 立ち絵へ
+      updateDisplay(currentCharId, 'stand');
     });
 
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateDisplay(currentCharId, 'bust'); // 立ち絵 → バストアップへ
+      updateDisplay(currentCharId, 'bust');
     });
 
     // スワイプ処理
@@ -225,9 +224,9 @@
       const diffX = startX - endX;
       if (Math.abs(diffX) > 40) {
         if (diffX > 0 && currentViewType === 'bust') {
-          updateDisplay(currentCharId, 'stand'); // 左スワイプで立ち絵へ
+          updateDisplay(currentCharId, 'stand');
         } else if (diffX < 0 && currentViewType === 'stand') {
-          updateDisplay(currentCharId, 'bust'); // 右スワイプでバストアップへ
+          updateDisplay(currentCharId, 'bust');
         }
       }
     }
