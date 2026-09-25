@@ -334,6 +334,41 @@ body {
 }
 
 /* ==========================================
+   Character ページ専用：お花アクセント（アイコン左〜メイン画像被せ）
+   ========================================== */
+.char-display-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.char-selector-container {
+  position: relative;
+  z-index: 5; /* アイコンをタップしやすく前面に */
+}
+
+.character-img-box {
+  position: relative;
+  z-index: 2; /* お花の後ろ〜重なる位置関係 */
+}
+
+/* アイコン左付近から生えてメイン画像左上へ被さる花 */
+.chara-flower-accent {
+  position: absolute;
+  top: -15px;         /* アイコンの左上あたりから生える位置 */
+  left: -20px;        /* カード枠の左端付近 */
+  width: 150px;       /* ほどよいアクセントサイズ */
+  height: 180px;
+  background-image: url('./chara_flower.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  z-index: 10;        /* メイン画像の上に若干被せる */
+  pointer-events: none; /* タップ操作を妨げない */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  opacity: 0.92;
+}
+
+/* ==========================================
    5. Story ページ＆小説本文専用
    ========================================== */
 .story-list {

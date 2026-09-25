@@ -9,8 +9,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>キャラクター | 砂都夜行記</title>
   
-  <!-- バージョン 1.0 に指定 -->
-  <link rel="stylesheet" href="./style.css?v=1.0">
+  <link rel="stylesheet" href="./style.css?v=1.1">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -38,30 +37,38 @@
     <div class="content-card">
       <h1 class="page-title char-title-left">CHARACTER</h1>
 
-      <!-- キャラクター選択用アイコン -->
-      <div class="char-selector-container">
-        <button class="char-thumb-btn active" data-char="1" aria-label="Nor'a Fainne">
-          <img src="./nora-icon.png" alt="Nor'a Fainne Icon" onerror="this.src='./nora_bust.png'">
-        </button>
-        <button class="char-thumb-btn" data-char="2" aria-label="Hyde Gilham">
-          <img src="./hyde-icon.png" alt="Hyde Gilham Icon" onerror="this.src='./nora_bust.png'">
-        </button>
-      </div>
+      <!-- アイコンとメイン画像をまとめるラッパー（お花配置用） -->
+      <div class="char-display-wrapper">
 
-      <!-- メイン画像表示エリア -->
-      <div class="character-img-box" id="charImgBox">
-        <!-- 画像背面のグラデーションレイヤー -->
-        <div class="char-bg-overlay"></div>
+        <!-- アイコン左付近からメイン画像左上へ被さるお花 -->
+        <div class="chara-flower-accent"></div>
 
-        <!-- 矢印ナビボタン -->
-        <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Bust-up">▲</button>
-        <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="To Stand">▲</button>
+        <!-- キャラクター選択用アイコン -->
+        <div class="char-selector-container">
+          <button class="char-thumb-btn active" data-char="1" aria-label="Nor'a Fainne">
+            <img src="./nora-icon.png" alt="Nor'a Fainne Icon" onerror="this.src='./nora_bust.png'">
+          </button>
+          <button class="char-thumb-btn" data-char="2" aria-label="Hyde Gilham">
+            <img src="./hyde-icon.png" alt="Hyde Gilham Icon" onerror="this.src='./nora_bust.png'">
+          </button>
+        </div>
 
-        <!-- メイン画像 -->
-        <img id="mainCharImg" src="./nora_bust.png" alt="Nor'a Fainne">
-        
-        <!-- 画像種別表示 -->
-        <span class="img-type-badge" id="imgTypeBadge">BUST-UP</span>
+        <!-- メイン画像表示エリア -->
+        <div class="character-img-box" id="charImgBox">
+          <!-- 画像背面のグラデーションレイヤー -->
+          <div class="char-bg-overlay"></div>
+
+          <!-- 矢印ナビボタン -->
+          <button class="swipe-arrow arrow-left" id="prevBtn" aria-label="Back to Bust-up">▲</button>
+          <button class="swipe-arrow arrow-right" id="nextBtn" aria-label="To Stand">▲</button>
+
+          <!-- メイン画像 -->
+          <img id="mainCharImg" src="./nora_bust.png" alt="Nor'a Fainne">
+          
+          <!-- 画像種別表示 -->
+          <span class="img-type-badge" id="imgTypeBadge">BUST-UP</span>
+        </div>
+
       </div>
 
       <!-- プロフィールテキストエリア -->
