@@ -532,6 +532,41 @@ body {
 }
 
 /* ==========================================
+   INDEX ページ専用：タイトル裏〜ATTENTION右上のお花アクセント
+   ========================================== */
+.index-card-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.logo-title {
+  position: relative;
+  z-index: 2; /* お花より手前に表示 */
+}
+
+.warning-box {
+  position: relative;
+  z-index: 2; /* お花より手前に表示 */
+}
+
+/* ATTENTION右上〜タイトル裏から生えるお花 */
+.flower-accent {
+  position: absolute;
+  top: -25px;         /* タイトルの裏側まで伸びる位置 */
+  right: -10px;       /* ATTENTION枠の右上付近 */
+  width: 170px;       /* 小さめの上品なサイズ */
+  height: 200px;
+  background-image: url('./flower_orig.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  z-index: 1;         /* タイトルと枠の背後に配置 */
+  pointer-events: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  opacity: 0.9;
+}
+
+/* ==========================================
    7. 固定フッター（共通）
    ========================================== */
 .site-footer {
@@ -548,29 +583,4 @@ body {
   margin-top: auto;
   padding: 0 10px;
   text-align: center;
-}
-
-/* ==========================================
-   INDEX ページ専用：背景フラワー装飾
-   ========================================== */
-.index-container {
-  position: relative; /* 背景配置用 */
-  z-index: 1;
-}
-
-.index-flower-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -52%);
-  width: 380px;
-  height: 420px;
-  background-image: url('./flower_bg.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.22; /* 主張しすぎないうっすらとした透明感 */
-  filter: blur(1px) drop-shadow(0 0 15px rgba(197, 160, 89, 0.2));
-  z-index: -1; /* 文字やボタンの後ろへ配置 */
-  pointer-events: none;
 }
