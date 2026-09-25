@@ -549,3 +549,28 @@ body {
   padding: 0 10px;
   text-align: center;
 }
+
+/* ==========================================
+   INDEX ページ専用：背景フラワー装飾
+   ========================================== */
+.index-container {
+  position: relative; /* 背景配置用 */
+  z-index: 1;
+}
+
+.index-flower-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  width: 380px;
+  height: 420px;
+  background-image: url('./flower_bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.22; /* 主張しすぎないうっすらとした透明感 */
+  filter: blur(1px) drop-shadow(0 0 15px rgba(197, 160, 89, 0.2));
+  z-index: -1; /* 文字やボタンの後ろへ配置 */
+  pointer-events: none;
+}
