@@ -552,7 +552,7 @@ body {
 /* ATTENTION右上〜タイトル裏から生えるお花 */
 .flower-accent {
   position: absolute;
-  top: -60px;         /* タイトルの裏側まで伸びる位置 */
+  top: -80px;         /* タイトルの裏側まで伸びる位置 */
   right: -10px;       /* ATTENTION枠の右上付近 */
   width: 170px;       /* 小さめの上品なサイズ */
   height: 200px;
