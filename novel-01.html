@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 検索避け -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>サンプル小説 | SATOYAKOUKI</title>
+  
+  <!-- CSS読み込み（バージョン 2.7 に指定） -->
+  <link rel="stylesheet" href="./style.css?v=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 固定ヘッダー -->
+  <header class="site-header">
+    <a href="./index.html" class="header-logo">砂都夜行記</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- ドロップダウンメニュー -->
+  <nav class="dropdown-menu" id="dropdownMenu">
+    <a href="./index.html">INDEX</a>
+    <a href="./character.html">CHARACTER</a>
+    <a href="./story.html">STORY</a>
+    <a href="./author.html">AUTHOR</a>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <main class="main-wrapper">
+    <div class="content-card">
+      
+      <!-- 小説ラッパー（上下左右に余白を確保） -->
+      <article class="novel-wrapper">
+        <h1 class="novel-title">サンプル小説タイトル</h1>
+        <p class="novel-subtitle">NIGHT & SAND / SHORT STORY</p>
+
+        <!-- 本文エリア -->
+        <div class="novel-body">
+          <p>
+            夜の静寂が都を包み込む頃、砂の風が小さく吹き抜けた。街灯の明かりが石畳を淡く照らし、影が静かに伸びていく。
+          </p>
+          <p>
+            「ここにいたのか」
+          </p>
+          <p>
+            低く落ち着いた声が聞こえ、振り返ると彼は静かにたたずんでいた。月に照らされたその瞳には、どこか遠い日の記憶が映っているようだった。
+          </p>
+          <p>
+            言葉を交わさずとも、互いの存在が夜の冷たさを少しだけ和らげていく。砂の都の夜は、今日も静かに更けていくのだった。
+          </p>
+        </div>
+
+        <!-- 一覧へ戻るボタン -->
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="./story.html" class="social-btn" style="display: inline-block; width: auto; padding: 10px 24px;">STORY LIST</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- 固定フッター -->
+  <footer class="site-footer">
+    <p>maruhara / 転載禁止 Do not repost without permission.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    menuBtn.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
