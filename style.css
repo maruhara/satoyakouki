@@ -354,7 +354,7 @@ body {
 /* アイコンの右側から生えてメイン画像右上へ被さる花 */
 .chara-flower-accent {
   position: absolute;
-  top: -15px;         /* アイコンの上端付近 */
+  top: -60px;         /* アイコンの上端付近 */
   right: -15px;       /* アイコンの右側〜カード右端付近 */
   width: 150px;       /* ほどよいアクセントサイズ */
   height: 180px;
