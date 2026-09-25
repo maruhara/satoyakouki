@@ -334,7 +334,7 @@ body {
 }
 
 /* ==========================================
-   Character ページ専用：お花アクセント（アイコン左〜メイン画像被せ）
+   Character ページ専用：お花アクセント（アイコン右〜メイン画像右上被せ）
    ========================================== */
 .char-display-wrapper {
   position: relative;
@@ -348,20 +348,20 @@ body {
 
 .character-img-box {
   position: relative;
-  z-index: 2; /* お花の後ろ〜重なる位置関係 */
+  z-index: 2;
 }
 
-/* アイコン左付近から生えてメイン画像左上へ被さる花 */
+/* アイコンの右側から生えてメイン画像右上へ被さる花 */
 .chara-flower-accent {
   position: absolute;
-  top: -15px;         /* アイコンの左上あたりから生える位置 */
-  left: -20px;        /* カード枠の左端付近 */
+  top: -15px;         /* アイコンの上端付近 */
+  right: -15px;       /* アイコンの右側〜カード右端付近 */
   width: 150px;       /* ほどよいアクセントサイズ */
   height: 180px;
   background-image: url('./chara_flower.png');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: top left;
+  background-position: top right;
   z-index: 10;        /* メイン画像の上に若干被せる */
   pointer-events: none; /* タップ操作を妨げない */
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
