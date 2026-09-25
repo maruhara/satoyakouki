@@ -3,34 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 検索避け -->
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>砂都夜行記</title>
   
+  <!-- バージョン 1.0 に指定 -->
   <link rel="stylesheet" href="./style.css?v=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku Gothic New:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- 固定ヘッダー -->
-  <header class="site-header">
-    <a href="./index.html" class="header-logo">砂都夜行記</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  <!-- ドロップダウンメニュー -->
-  <nav class="dropdown-menu" id="dropdownMenu">
-    <a href="./index.html">INDEX</a>
-    <a href="./character.html">CHARACTER</a>
-    <a href="./story.html">STORY</a>
-    <a href="./author.html">AUTHOR</a>
-  </nav>
-
-  <!-- INDEX メインコンテンツ -->
+  <!-- INDEX メインコンテンツ（ヘッダー非表示） -->
   <main class="index-container">
 
     <!-- タイトルとATTENTIONを囲むラッパー -->
@@ -43,10 +28,9 @@
 
       <div class="warning-box">
         <span class="warning-title">ATTENTION</span>
-        当サイトは個人の二次創作サイトです。<br>
-        公式とは一切関係ございません。<br>
+        当サイトはファイナルファンタジーXIVの個人二次創作・同人サイトです。<br>
+        公式・関係各社様とは一切関係ございません。<br>
         無断転載・複製・AI学習等は固く禁止しております。
-        Do not repost without permission.
       </div>
 
     </div>
@@ -60,12 +44,5 @@
     <p>maruhara / 転載禁止 Do not repost without permission.</p>
   </footer>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    menuBtn.addEventListener('click', () => {
-      dropdownMenu.classList.toggle('active');
-    });
-  </script>
 </body>
 </html>
